@@ -1,0 +1,36 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+    color: var(--segundary-back-color);
+}
+
+:root {
+    /* Background Colors */
+    --primary-back-color: #ffffff;
+    --segundary-back-color: #0a0909;
+
+    /* Nature Colors */
+    --nature-white:   #F2F2F2;
+    --nature-green_0: #A7F2AC;
+    --nature-green_1: #0BD904;
+    --nature-green_2: #0ABF04;
+    --nature-green_3: #09A603;
+
+    /* Foods Colors */
+    /* #F21905 */
+    
+    /* Gray Colors */
+    --gray-color_0: #F2F2F2;
+    --gray-color_1: #D9D9D9;
+    --gray-color_2: #737272;
+    --gray-color_3: #262524;
+    --gray-color_4: #0D0D0D;
+}
+
+body {
+    background-color: var(--primary-back-color);
+}

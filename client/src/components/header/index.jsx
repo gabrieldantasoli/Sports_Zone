@@ -11,52 +11,58 @@ import './header.css';
 export default () => {
 
     const [categorias, setCategorias] = useState([]);
+    const [elementosVisiveis, setElementosVisiveis] = useState(['Eletrônicos',
+    'Teclados',
+    'Bicicletas',
+    'Saúdavel',
+    'Eletrônicos',
+    'Teclados',
+    'Bicicletas',
+    'Saúdavel',
+    'Eletrônicos',
+    'Teclados',
+    'Bicicletas',
+    'Saúdavel']);
 
     const removeItens = () => {
-        var largura = window.innerWidth;
-        var totalWidth = largura - 450;
-        var nav = document.getElementById('nav');
-        var list = nav.querySelector('ul');
-      
-        var tempList = [];
+        const largura = window.innerWidth;
+        const totalWidth = largura - 450;
+        const nav = document.getElementById('nav');
+        const list = nav.querySelector('ul');
+        const tempList = Array.from(list.children);
       
         if (nav.offsetWidth > totalWidth) {
-          console.log(nav.offsetWidth + ' ' + totalWidth);
-          while (nav.offsetWidth > totalWidth && list.children.length > 0) {
-            var lastElement = list.lastElementChild;
-            var text = lastElement.textContent;
-      
-            tempList.push(text);
-      
-            lastElement.remove();
+          while (nav.offsetWidth > totalWidth && tempList.length > 0) {
+            const lastElement = tempList.pop();
+            list.removeChild(lastElement);
           }
-          setCategorias(categorias => [...categorias, ...tempList]);
-        } else {
-            // console.log(nav.offsetWidth + ' ' + totalWidth);
-            // tempList = categorias.slice();
-            // console.log(tempList);
-            // while (nav.offsetWidth <= totalWidth && tempList.length > 0) {
-            //   var firstElement = tempList[0];
-            //   var novoLiElement = document.createElement('li');
-            //   novoLiElement.textContent = firstElement;
-            //   list.appendChild(novoLiElement);
-            //   tempList = tempList.slice(1);
-            // }
-            // setCategorias(tempList);
+        } else if (totalWidth - nav.offsetWidth > 100) {
+          const maxVisibleElements = Math.floor(totalWidth / 100); // Defina o tamanho máximo da lista com base na largura
+          while (totalWidth - nav.offsetWidth > 100 && tempList.length < categorias.length && tempList.length < maxVisibleElements) {
+            const firstElementText = categorias[tempList.length];
+            const novoLiElement = document.createElement('li');
+            novoLiElement.textContent = firstElementText;
+            list.appendChild(novoLiElement);
+            tempList.push(novoLiElement);
           }
-          
+        }
+        
+        setCategorias(tempList.map((element) => element.textContent));
       };
       
       
-      useEffect(() => {
-        removeItens();
-      }, []);
       
-      useEffect(() => {
-        console.log(categorias);
-      }, [categorias]);
+
+    useEffect(() => {
+        removeItens();
+        window.addEventListener('resize', removeItens);
+        return () => {
+        window.removeEventListener('resize', removeItens);
+        };
+    }, []);
 
     window.addEventListener('load', () => {window.addEventListener('resize', removeItens);})
+
     return (
         <div className='mainHeader'>
             <div className="top">
@@ -101,14 +107,9 @@ export default () => {
                     </button>
                     <nav id='nav'>
                         <ul>
-                            <li>Eletrônicos</li>
-                            <li>Teclados</li>
-                            <li>Bicicletas</li>
-                            <li>Saúdavel</li>
-                            <li>Eletrônicos</li>
-                            <li>Teclados</li>
-                            <li>Bicicletas</li>
-                            <li>Saúdavel</li>
+                            {elementosVisiveis.map((elemento, index) => (
+                                <li key={index}>{elemento}</li>
+                            ))}
                         </ul>
                     </nav>
                 </div>

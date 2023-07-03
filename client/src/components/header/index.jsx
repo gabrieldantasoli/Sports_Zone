@@ -30,28 +30,28 @@ export default () => {
         const nav = document.getElementById('nav');
         const list = nav.querySelector('ul');
         const tempList = Array.from(list.children);
-      
+        
         if (nav.offsetWidth > totalWidth) {
-          while (nav.offsetWidth > totalWidth && tempList.length > 0) {
+            while (nav.offsetWidth > totalWidth && tempList.length > 0) {
             const lastElement = tempList.pop();
             list.removeChild(lastElement);
-          }
+            }
         } else if (totalWidth - nav.offsetWidth > 100) {
-          const maxVisibleElements = Math.floor(totalWidth / 100); // Defina o tamanho máximo da lista com base na largura
-          while (totalWidth - nav.offsetWidth > 100 && tempList.length < categorias.length && tempList.length < maxVisibleElements) {
+            const maxVisibleElements = Math.floor(totalWidth / 100); // Defina o tamanho máximo da lista com base na largura
+            while (totalWidth - nav.offsetWidth > 100 && tempList.length < categorias.length && tempList.length < maxVisibleElements) {
             const firstElementText = categorias[tempList.length];
             const novoLiElement = document.createElement('li');
             novoLiElement.textContent = firstElementText;
             list.appendChild(novoLiElement);
             tempList.push(novoLiElement);
-          }
+            }
         }
         
         setCategorias(tempList.map((element) => element.textContent));
-      };
-      
-      
-      
+        };
+        
+        
+        
 
     useEffect(() => {
         removeItens();

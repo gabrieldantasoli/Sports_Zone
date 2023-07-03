@@ -37,3 +37,8 @@
 body {
     background-color: var(--primary-back-color);
 }
+
+.full_window, .slide, .slide_view  {
+    width: 100vw;
+    min-height: calc(100vh - 105px);
+}

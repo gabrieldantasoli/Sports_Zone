@@ -1,0 +1,217 @@
+/* Main Header Top component Style start's here */
+
+.mainHeader * {
+    color: var(--primary-back-color);
+    border: none;
+    background-color: transparent;
+}
+
+.mainHeader .top {
+    display: flex;
+    padding: 0.5rem 1.5rem;
+    align-items: center;
+    background-color: var(--gray-color_4);
+    justify-content: space-between;
+    gap: 0.7rem;
+}
+
+.mainHeader .top .cart {
+    position: relative;
+}
+
+.mainHeader .top .cart-number {
+    position: absolute;
+    top: -1rem;
+    right: -1rem;
+    font-size: 0.7rem;
+    background-color: var(--red-color);
+    padding: 0.1rem 0.2rem;
+    border-radius: 0.7rem;
+}
+
+.mainHeader .top .isLogged {
+    text-align: center;
+}
+
+.mainHeader .logo img {
+    width: 100px;
+}
+
+.mainHeader .location {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;   
+}
+
+.mainHeaderSearch {
+    display: flex;
+    overflow: hidden;
+    width: 65%;
+    border-radius: 0.6rem;
+}
+
+.mainHeaderSearch select {
+    padding: 0.6rem;
+    background-color: var(--nature-white);
+    color: var(--segundary-back-color);
+}
+
+.mainHeaderSearch option {
+    color: var(--segundary-back-color);
+}
+
+.mainHeaderSearch option:hover {
+    font-weight: 900;
+}
+
+.mainHeader #search {
+    width: calc(100% - 240px);
+    background-color: var(--primary-back-color);
+    color: var(--gray-color_4);
+    font-weight: 600;
+    padding: 0 1rem;
+    font-size: 1rem;
+}
+
+.mainHeader #search-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    background-color: var(--yellow-color);
+}
+
+.mainHeader #search-button * {
+    font-size: 25px;
+    color: var(--gray-color_4);
+}
+
+.mainHeader #search-button:hover * {
+    color: var(--nature-white);
+    font-size: 30px;
+}
+
+/* Main Header Top component Style end's here */
+
+
+
+/* Main Header Bottom component Style start's here */
+
+.mainHeader .bottom *:hover {
+    cursor: pointer;
+}
+
+.mainHeader .bottom {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--gray-color_3);
+    padding: 0.45rem 1.5rem;
+}
+
+.mainHeader .classes {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    max-width: calc(100% - 200px);
+    overflow: hidden;
+}
+
+.mainHeader ul {
+    display: flex;
+    gap: 1rem;
+}
+
+.mainHeader #mainHeader-all-button {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 1.2rem;
+}
+
+.mainHeader .favorite {
+    display: flex;
+    gap: 1rem;
+}
+
+.mainHeader .promo-red {
+    color: var(--red-color);
+    font-weight: 900;
+    text-decoration: underline;
+}
+
+.mainHeader .time span {
+    font-weight: 700;
+}
+
+.mainHeader .bottom .isLogged {
+    display: none;
+}
+
+/* Main Header Bottom component Style end's here */
+
+
+
+/* Media Querys */
+
+@media (max-width: 1270px) {
+    .mainHeader .location {
+        display: none;
+    }
+}
+
+@media (max-width: 900px) {
+    .mainHeader #search-button {
+        border-radius: 0 0.6rem 0.6rem 0;
+    }
+
+    .mainHeader select {
+        max-width: 100px;
+    }
+
+    .mainHeader #search {
+        width: calc(100% - 160px);
+    }
+}
+
+@media (max-width: 800px) {
+    .mainHeader select {
+        max-width: 100px;
+    }
+    
+    .mainHeader nav {
+        display: none;
+    }
+
+    .mainHeader .bottom .isLogged {
+        display: inline-block;
+    }
+
+    .mainHeader .top .isLogged {
+        display: none;
+    }
+}
+
+@media (max-width: 675px) {
+    .mainHeader select {
+        display: none;
+    }
+
+    .mainHeader #search {
+        width: calc(100%);
+        padding: 0.7rem;
+    }
+
+    .mainHeader .time {
+        display: none;
+    }
+
+    .mainHeader .small-write {
+        font-weight: 800;
+    }
+}
+
+@media (max-width: 400px) {
+    .mainHeader .all {
+        display: none;
+    }
+}

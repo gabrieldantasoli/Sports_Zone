@@ -8,7 +8,6 @@ import { Header } from './components';
 function App() {
   return (
     <div className="App">
-      Hello, Sport Zone!!!
       <Header />
       <AppRoutes />
     </div>

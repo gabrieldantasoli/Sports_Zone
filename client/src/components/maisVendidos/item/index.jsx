@@ -6,7 +6,7 @@ import './item.css';
 export default ({img}) => {
 
     return (
-        <div className='categoriaIcon'>
+        <div className='maisVendidos'>
             <div className='img'>
                 <img src={img} alt="Product" />
             </div>

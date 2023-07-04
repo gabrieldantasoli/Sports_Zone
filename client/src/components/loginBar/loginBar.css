@@ -1,0 +1,39 @@
+.loginBar {
+    margin: 1.5rem;
+    text-align: center;
+    border-top: 2px solid var(--gray-color_2);
+    border-bottom: 2px solid var(--gray-color_2);
+    padding: 1rem;
+}
+
+.loginBar p{
+    color: var(--segundary-back-color);
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.loginBar p:nth-child(1) {
+    margin-bottom: 1rem;
+}
+
+.loginBar p.small{
+    color: var(--segundary-back-color);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+.loginBar a.button-login {
+    padding: 0.7rem 1rem;
+    border-radius: 10px;
+    background-color: #F2AC29;
+    border: 2px solid #D98E04;
+}
+
+.loginBar p.small a {
+    color: var(--blue-color);
+} 
+
+.loginBar p.small a:hover {
+    color: blue;
+} 

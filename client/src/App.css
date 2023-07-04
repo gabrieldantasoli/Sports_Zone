@@ -25,6 +25,7 @@
     /* Foods Colors */
     --red-color: #F21905;
     --yellow-color: #F0E71B;
+    --blue-color: rgb(0, 204, 255);
     
     /* Gray Colors */
     --gray-color_0: #F2F2F2;
@@ -35,10 +36,10 @@
 }
 
 body {
-    background-color: var(--primary-back-color);
+    background-color: var(--gray-color_1);
 }
 
 .full_window, .slide, .slide_view  {
     width: 100vw;
-    min-height: calc(100vh - 105px);
+    height: calc(100vh - 105px);
 }

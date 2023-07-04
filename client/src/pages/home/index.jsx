@@ -1,5 +1,6 @@
 import React from 'react';
-import { LandingPage } from '../../components';
+import { LandingPage, CategoriaSlide } from '../../components';
+
 
 //IMPORTANDO O CSS
 import './home.css';
@@ -9,7 +10,8 @@ export default () => {
     return (
         <div>
             <LandingPage />
-            Home
+            <CategoriaSlide />
+            <p>home</p>
         </div>
     )
 }

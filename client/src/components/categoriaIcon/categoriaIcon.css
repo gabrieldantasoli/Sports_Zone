@@ -1,0 +1,42 @@
+.categoriaIcon {
+    position: relative;
+    width: 200px;
+    height: 200px;
+}
+
+.categoriaIcon .img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    background-color: var(--blue-color);
+}
+
+.categoriaIcon img {
+    width: 70%;
+}
+
+.categoriaIcon .text {
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--primary-back-color);
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.categoriaIcon .text p {
+    color: var(--gray-color_3);
+}
+
+@media (max-width: 1400px ) {
+    .categoriaIcon, .categoriaIcon .img {
+        width: 150px;
+        height: 150px;
+    }
+}

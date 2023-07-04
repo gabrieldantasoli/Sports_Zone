@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/splide/dist/css/themes/splide-skyblue.min.css';
-import CategoriaIcon from '../categoriaIcon';
+import Icon from '../item';
 
 //IMPORTANDO O CSS
-import './categoriaSlide.css';
+import './slide.css';
 
 
 export default () => {
@@ -12,10 +11,10 @@ export default () => {
 
     return (
         <section className='categorias'>
-            <h2>Navegue por categorias :</h2>
+            <h2>Mais Vendidos :</h2>
             <div className="categoriaSlide">
                 {categorias.map((categoria, index) => (
-                <CategoriaIcon key={index} img={categoria.img} name={categoria.name} />
+                <Icon key={index} img={categoria.img} />
             ))}
             </div>
             

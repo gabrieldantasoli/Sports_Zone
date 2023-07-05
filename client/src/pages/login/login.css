@@ -1,0 +1,27 @@
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-direction: column;
+}
+
+.login .lContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login .lContainer img {
+    width: 200px;
+    margin-bottom: 2rem;
+}
+
+.login .lContainer input {
+    width: 90%;
+    max-width: 350px;
+    background-color: #fff;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+}

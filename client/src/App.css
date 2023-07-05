@@ -39,7 +39,7 @@ body {
     background-color: var(--gray-color_1);
 }
 
-.full_window, .slide, .slide_view  {
+.full_window, .slide, .slide_view, .login {
     width: 100vw;
     height: calc(100vh - 105px);
 }

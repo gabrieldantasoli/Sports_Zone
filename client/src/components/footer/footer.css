@@ -1,0 +1,37 @@
+.footerSection {
+    background-color: var(--gray-color_3);
+}
+
+.footerSection .back_begin {
+    background-color: var(--gray-color_2);
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.footerSection .back_begin a {
+    width: 100%;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-back-color);
+}
+
+.footerSection .back_begin a:hover {
+    color: #F2AC29;
+}
+
+.footerSection .info * {
+    text-align: center;
+    color: var(--primary-back-color);
+}
+
+.footerSection .info1 {
+    margin: 1rem 0;
+}
+
+.footerSection .info2 {
+    padding: 1rem 0;
+}
+
+.footerSection .info2 p{
+    padding: 0.5rem;
+}

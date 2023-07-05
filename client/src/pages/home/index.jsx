@@ -1,5 +1,5 @@
 import React from 'react';
-import { LandingPage, CategoriaSlide, MaisVendidos, PassBanner, LoginBar } from '../../components';
+import { LandingPage, CategoriaSlide, MaisVendidos, PassBanner, LoginBar, Footer } from '../../components';
 
 
 //IMPORTANDO O CSS
@@ -14,7 +14,7 @@ export default () => {
             <MaisVendidos />
             <PassBanner />
             <LoginBar />
-            <p>home</p>
+            <Footer />
         </div>
     )
 }

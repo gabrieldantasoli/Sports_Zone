@@ -64,7 +64,7 @@ export default () => {
     window.addEventListener('load', () => {window.addEventListener('resize', removeItens);})
 
     return (
-        <div className='mainHeader'>
+        <div className='mainHeader' id='begin'>
             <div className="top">
                 <div className="logo">
                     <img src={Logo_img} alt='Sport-Zone Logo' />

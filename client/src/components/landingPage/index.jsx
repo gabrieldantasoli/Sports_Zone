@@ -8,7 +8,7 @@ import './landingPage.css';
 export default () => {
 
     return (
-        <section className='landingPage full_window'>
+        <section className='landingPage full_window' id="landingP">
             <Splide className='slide' options={{ rewind: true, gap: '1rem', hasSliderWrapper: true, hasAutoplayProgress: true,}}>
                 <SplideSlide className='slide_view'>
                     <p>slide 1</p>

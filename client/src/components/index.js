@@ -5,3 +5,4 @@ export { default as CategoriaSlide } from "./categoria/Slide";
 export { default as MaisVendidos } from "./maisVendidos/slider";
 export { default as PassBanner } from "./passBanner";
 export { default as LoginBar } from "./loginBar";
+export { default as Footer } from "./footer";

@@ -7,10 +7,14 @@
 }
 
 .login .lContainer {
+    max-width: 90%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: var(--primary-back-color);
+    padding: 1rem;
+    border-radius: 1rem;
 }
 
 .login .lContainer img {
@@ -22,6 +26,64 @@
     width: 90%;
     max-width: 350px;
     background-color: #fff;
+    border: 2px solid var(--segundary-back-color);
     padding: 0.5rem 1rem;
     margin-bottom: 1rem;
+}
+
+.login .lContainer label {
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    font-size: 1.2rem;
+}
+
+.login .lContainer button {
+    font-size: 1.3rem;
+    font-weight: 600;
+    padding: 0.7rem 2rem;
+    border-radius: 10px;
+    background-color: #F2AC29;
+    border: 2px solid #D98E04;
+    margin: 0.6rem;
+    transition: 0.4s ease-in-out;
+}
+
+.login .lContainer button:hover {
+    color: #fff;
+    box-shadow: 0 0 15px #D98E04;
+}
+
+.login p {
+    width: 90%;
+    max-width: 600px;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.login .link_register {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-back-color);
+    padding: 1rem;
+    border-radius: 1rem;
+    width: 90%;
+    max-width: 600px;
+}
+
+.login .link_register a {
+    padding: 0.7rem 4rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 5px #000;
+    transition: 0.4s ease-in-out;
+}
+
+.login .link_register a:hover {
+    box-shadow: 0 0 5px #000,
+                0 0 10px #000;
 }

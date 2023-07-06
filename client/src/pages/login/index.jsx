@@ -47,7 +47,7 @@ return (
         <p>Ao continuar, você concorda com as Condições de Uso da Sport Zone. Por favor verifique a Notificação de Privacidade, Notificação de Cookies e a Notificação de Anúncios Baseados em Interesse. </p>
     {/* {error && <span>{error.message}</span>} */}
     </div>
-    <div>
+    <div className="link_register">
         <span>Novo na Sport Zone ?</span>
         <a href="/register">Criar minha conta</a>
     </div>

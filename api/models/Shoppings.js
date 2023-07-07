@@ -2,10 +2,11 @@ import mongoose from "mongoose";
 
 const UserShoppings = new mongoose.Schema(
     {
-        // user_id : {
-        //     type: [String],
-        //     required: true,
-        // },
+        user: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
+            required: true,
+        },
         ids : {
             type: [String],
             required: true,

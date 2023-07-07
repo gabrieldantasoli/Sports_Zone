@@ -1,7 +1,12 @@
 import mongoose from "mongoose";
 
 const UserAddress = new mongoose.Schema(
-    {
+    {   
+        user: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
+            required: true,
+        },
         country : {
             type: String,
             required: true,
@@ -34,6 +39,10 @@ const UserAddress = new mongoose.Schema(
             type: String,
             required: true,
         },
+        active : {
+            type: Boolean,
+            required: false,
+        }
     },
     { timestamps: true }
 ); 

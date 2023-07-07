@@ -1,13 +1,18 @@
 import mongoose from "mongoose";
 
-const UserFavorites = new mongoose.Schema(
+const UserFavoritesSchema = new mongoose.Schema(
     {
-        ids : {
+        user: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
+            required: true,
+        },
+        ids: {
             type: [String],
             required: true,
         },
     },
     { timestamps: true }
-); 
+);
 
-export default mongoose.model("UserFavorites", UserFavorites);
+export default mongoose.model("UserFavorites", UserFavoritesSchema);

@@ -90,9 +90,10 @@ export default () => {
                 </div>
                 <div className="isLogged">
                     <div>
-                        <span className='small-write'>
+                        <a href="/login"><span className='small-write'>
                         Olá, faça seu login
-                        </span>
+                        </span></a>
+                        
                     </div>
                 </div>
                 <div className="cart">
@@ -121,9 +122,10 @@ export default () => {
 
                 <div className="isLogged">
                     <div>
-                        <span className='small-write'>
+                        <a href="/login"><span className='small-write'>
                             Login
-                        </span>
+                        </span></a>
+                        
                     </div>
                 </div>
             </div>

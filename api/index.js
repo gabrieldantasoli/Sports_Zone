@@ -6,6 +6,7 @@ import cors from "cors";
 
 import authRoute from "./routes/auth.js";
 import userRoute from "./routes/users.js";
+import userAdress from "./routes/address.js";
 
 
 const app = express();
@@ -32,6 +33,7 @@ app.use(express.json());
 
 app.use("/auth", authRoute);
 app.use("/user", userRoute);
+app.use("/address", userAdress);
 
 
 app.use((err, req, res, next) => {

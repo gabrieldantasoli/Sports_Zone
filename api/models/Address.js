@@ -37,7 +37,7 @@ const UserAddress = new mongoose.Schema(
         }, 
         reference : {
             type: String,
-            required: true,
+            required: false,
         },
         active : {
             type: Boolean,

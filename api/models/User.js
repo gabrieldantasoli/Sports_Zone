@@ -22,7 +22,11 @@ const UserSchema = new mongoose.Schema(
         active_address: {
             type: String,
             required: false
-        }
+        },
+        isAdmin: {
+            type: Boolean,
+            default: false,
+        },
     },
     { timestamps: true }
 ); 

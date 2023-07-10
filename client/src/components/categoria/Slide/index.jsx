@@ -1,13 +1,29 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '@splidejs/splide/dist/css/themes/splide-skyblue.min.css';
 import CategoriaIcon from '../Icon';
 
 //IMPORTANDO O CSS
 import './categoriaSlide.css';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 
 export default () => {
-    const [categorias, setCategorias] = useState([{img: "https://firebasestorage.googleapis.com/v0/b/megamart-1fe70.appspot.com/o/images%2F00000004?alt=media&token=7967ebd1-cccb-432f-8feb-1c46a315f92c", name: "casa"},{img: "https://firebasestorage.googleapis.com/v0/b/megamart-1fe70.appspot.com/o/images%2F00000004?alt=media&token=7967ebd1-cccb-432f-8feb-1c46a315f92c", name: "fit"},{img: "https://firebasestorage.googleapis.com/v0/b/megamart-1fe70.appspot.com/o/images%2F00000004?alt=media&token=7967ebd1-cccb-432f-8feb-1c46a315f92c", name: "eletronicos"},{img: "https://firebasestorage.googleapis.com/v0/b/megamart-1fe70.appspot.com/o/images%2F00000004?alt=media&token=7967ebd1-cccb-432f-8feb-1c46a315f92c", name: "leitura"},{img: "https://firebasestorage.googleapis.com/v0/b/megamart-1fe70.appspot.com/o/images%2F00000004?alt=media&token=7967ebd1-cccb-432f-8feb-1c46a315f92c", name: "namorados"},{img: "https://firebasestorage.googleapis.com/v0/b/megamart-1fe70.appspot.com/o/images%2F00000004?alt=media&token=7967ebd1-cccb-432f-8feb-1c46a315f92c", name: "casa"},{img: "https://firebasestorage.googleapis.com/v0/b/megamart-1fe70.appspot.com/o/images%2F00000004?alt=media&token=7967ebd1-cccb-432f-8feb-1c46a315f92c", name: "fit"},{img: "https://firebasestorage.googleapis.com/v0/b/megamart-1fe70.appspot.com/o/images%2F00000004?alt=media&token=7967ebd1-cccb-432f-8feb-1c46a315f92c", name: "eletronicos"},{img: "https://firebasestorage.googleapis.com/v0/b/megamart-1fe70.appspot.com/o/images%2F00000004?alt=media&token=7967ebd1-cccb-432f-8feb-1c46a315f92c", name: "leitura"},{img: "https://firebasestorage.googleapis.com/v0/b/megamart-1fe70.appspot.com/o/images%2F00000004?alt=media&token=7967ebd1-cccb-432f-8feb-1c46a315f92c", name: "namorados"}]);
+
+    const [categorias, setCategorias] = useState([]);
+
+    const handleClick = async () => {
+        try {
+            const res = await axios.get("/category");
+            setCategorias(res.data);
+        } catch (err) {
+            toast.error("Falha ao acessar banco de dados!");
+        }
+    }
+        
+    useEffect(() => {
+        handleClick();
+      }, []);
 
     return (
         <section className='categorias'>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Home, Login, Register } from '../pages';
+import { Home, Login, Register, Cart } from '../pages';
 
 export default () => {
     return(
@@ -8,6 +8,7 @@ export default () => {
             <Route path='/' element={<Home />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
+            <Route path='/cart' element={<Cart />} />
         </Routes>
     );
 };

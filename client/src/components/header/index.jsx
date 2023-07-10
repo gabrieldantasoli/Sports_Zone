@@ -7,27 +7,16 @@ import { FaListUl } from 'react-icons/fa';
 
 // IMPORTING THE CSS
 import './header.css';
-import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/authContext';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 export default () => {
 
-    const navigate = useNavigate();
     const { user } = useContext(AuthContext);
 
     const [categorias, setCategorias] = useState([]);
-    const [elementosVisiveis, setElementosVisiveis] = useState(['Eletrônicos',
-    'Teclados',
-    'Bicicletas',
-    'Saúdavel',
-    'Eletrônicos',
-    'Teclados',
-    'Bicicletas',
-    'Saúdavel',
-    'Eletrônicos',
-    'Teclados',
-    'Bicicletas',
-    'Saúdavel']);
+    const [elementosVisiveis, setElementosVisiveis] = useState([]);
 
     const removeItens = () => {
         const largura = window.innerWidth;
@@ -53,18 +42,26 @@ export default () => {
         }
         
         setCategorias(tempList.map((element) => element.textContent));
-        };
-        
-        
-        
+    };
 
+    const handleClick = async () => {
+        try {
+            const res = await axios.get("/category");
+            const arrayCategorys = res.data.map((category) => category.name);
+            await setElementosVisiveis(arrayCategorys);
+        } catch (err) {
+            toast.error("Falha ao acessar banco de dados!");
+        }
+    }
+        
     useEffect(() => {
-        removeItens();
+        handleClick();
+        setTimeout(() => removeItens(), 2000);
         window.addEventListener('resize', removeItens);
         return () => {
-        window.removeEventListener('resize', removeItens);
+          window.removeEventListener('resize', removeItens);
         };
-    }, []);
+      }, []);
 
     window.addEventListener('load', () => {window.addEventListener('resize', removeItens);})
 
@@ -72,7 +69,7 @@ export default () => {
         <div className='mainHeader' id='begin'>
             <div className="top">
                 <div className="logo">
-                    <img src={Logo_img} alt='Sport-Zone Logo' />
+                    <a href="/"><img src={Logo_img} alt='Sport-Zone Logo' /></a>
                 </div>
                 <div className="location">
                     <HiLocationMarker />
@@ -96,7 +93,7 @@ export default () => {
                 <div className="isLogged">
                     <div>
                         { user ? (
-                            <p>{ user.username.split()[0] }</p>
+                            <p>{ user.username.split()[0].slice(0,10) }</p>
                         ) : (
                             <a href="/login">
                                 <span className='small-write'>Olá, faça seu login</span>
@@ -107,8 +104,11 @@ export default () => {
                     </div>
                 </div>
                 <div className="cart">
-                    <BiCart />
-                    <span className="cart-number">9+</span>
+                    <a href="/cart">
+                        <BiCart />
+                        <span className="cart-number">9+</span>
+                    </a>
+                    
                 </div>
             </div>
             <div className="bottom">

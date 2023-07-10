@@ -52,7 +52,12 @@ const ProductSchema = new mongoose.Schema(
         img_gallery: {
             type: [String],
             required: true
-        }
+        },
+        sold : {
+            type: number,
+            required: true,
+            default: 0
+        },
     },
     { timestamps: true }
 ); 

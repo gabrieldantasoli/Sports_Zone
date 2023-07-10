@@ -1,13 +1,16 @@
 import express from "express";
-import { verifyAdmin, verifyToken, verifyUser } from "../utils/verifyToken.js";
-import { deleteUser, getUser, getUsers, updateUser } from "../controllers/users.js";
+import { verifyAdmin } from "../../utils/verifyToken.js";
+import { createCategory, updateCategory, getCategorys } from "../../controllers/product/category.js";
 
 const router = express.Router();
 
 // UPDATE
-router.put("/:id", verifyAdmin, updateUser); 
+router.put("/:id", verifyAdmin, updateCategory); 
 
 // Create
-router.delete("/", verifyAdmin, deleteUser);
+router.put("/", verifyAdmin, createCategory);
+
+// GET ALL CATEGORYS
+router.get("/", getCategorys);
 
 export default router;

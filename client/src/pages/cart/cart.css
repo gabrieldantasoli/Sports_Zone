@@ -1,0 +1,29 @@
+section.cart .notLogged  {
+    max-width: 1800px;
+    margin: auto;
+    display: flex;
+    height: calc(100vh - 110px);
+    background-color: #fff;
+}
+
+section.cart .notLogged .authenticate, section.cart .notLogged img {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+section.cart .notLogged .authenticate h3 {
+    color: var(--red-color);
+    font-weight: 900;
+    font-size: 2rem;
+}
+
+section.cart .notLogged .authenticate a {
+    color: var(--gray-color_3);
+    font-weight: 600;
+    font-size: 1.2rem;
+    text-decoration: underline;
+}

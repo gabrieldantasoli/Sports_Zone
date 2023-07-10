@@ -24,6 +24,11 @@
     overflow: scroll;   
 }
 
+.categorias .categoriaSlide img {
+    width: 80%;
+    aspect-ratio: 1 / 1;
+}
+
 @media (max-width: 1200px) {
     .categorias {
         width: 95%;

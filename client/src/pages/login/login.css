@@ -87,3 +87,10 @@
     box-shadow: 0 0 5px #000,
                 0 0 10px #000;
 }
+
+.login_error_message {
+    color: var(--red-color);
+    font-weight: 800;
+    font-size: 1.3rem;
+    text-decoration: none;
+}

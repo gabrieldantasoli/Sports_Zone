@@ -1,13 +1,13 @@
 import AppRoutes from './routes/AppRoutes';
 import './App.css';
-import { Header } from './components';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
 
-// import 'react-toastify/dist/ReactToastify.css';
-// <ToastContainer autoClose={4000} />
 
 function App() {
   return (
     <div className="App">
+      <ToastContainer autoClose={4000} />
       <AppRoutes />
     </div>
   );

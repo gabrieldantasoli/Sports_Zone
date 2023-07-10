@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Logo_img } from '../../imgs';
 import { HiLocationMarker } from 'react-icons/hi';
 import { BiSearchAlt, BiCart } from 'react-icons/bi';
@@ -7,8 +7,13 @@ import { FaListUl } from 'react-icons/fa';
 
 // IMPORTING THE CSS
 import './header.css';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/authContext';
 
 export default () => {
+
+    const navigate = useNavigate();
+    const { user } = useContext(AuthContext);
 
     const [categorias, setCategorias] = useState([]);
     const [elementosVisiveis, setElementosVisiveis] = useState(['Eletrônicos',
@@ -90,9 +95,14 @@ export default () => {
                 </div>
                 <div className="isLogged">
                     <div>
-                        <a href="/login"><span className='small-write'>
-                        Olá, faça seu login
-                        </span></a>
+                        { user ? (
+                            <p>{ user.username.split()[0] }</p>
+                        ) : (
+                            <a href="/login">
+                                <span className='small-write'>Olá, faça seu login</span>
+                            </a>
+                        )}
+                        
                         
                     </div>
                 </div>
@@ -122,10 +132,13 @@ export default () => {
 
                 <div className="isLogged">
                     <div>
-                        <a href="/login"><span className='small-write'>
-                            Login
-                        </span></a>
-                        
+                        { user ? (
+                            <p>{ user.username.split()[0] }</p>
+                        ) : (
+                            <a href="/login">
+                                <span className='small-write'>Login</span>
+                            </a> 
+                        )}
                     </div>
                 </div>
             </div>

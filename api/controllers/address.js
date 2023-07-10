@@ -1,4 +1,4 @@
-import Address from "../models/Address.js";
+import Address from "../models/user/Address.js";
 
 
 export const createUSerAddress = async (req, res, next) => {

@@ -5,15 +5,9 @@ import { deleteUser, getUser, getUsers, updateUser } from "../controllers/users.
 const router = express.Router();
 
 // UPDATE
-router.put("/:id", verifyUser, updateUser); 
+router.put("/:id", verifyAdmin, updateUser); 
 
-// DELETE
-router.delete("/:id", verifyUser, deleteUser);
-
-// GET
-router.get("/:id", verifyUser, getUser); 
-
-// GET ALL
-router.get("/", verifyAdmin, getUsers);
+// Create
+router.delete("/", verifyAdmin, deleteUser);
 
 export default router;

@@ -25,6 +25,7 @@ export default () => {
 
     const [pergunta, setPergunta] = useState("");
     const [perguntas, setPerguntas] = useState([]);
+    const [respostas, setRespostas] = useState({});
 
     const handleClick = async () => {
         try {
@@ -43,8 +44,11 @@ export default () => {
         try {
             const answers = {};
             for (let item in perguntas) {
-                // console.log(perguntas[item]);
+                const answer =  await (await axios.get(`/answer/${perguntas[item]._id}`)).data;
+                answers[perguntas[item]._id] = answer;
             }
+            console.log(answers);
+            setRespostas(answers);
         } catch (err) {
             toast.error(err.message);
         }
@@ -75,6 +79,10 @@ export default () => {
     useEffect(() => {
         handleClick();
     }, []);
+        
+    useEffect(() => {
+        handleAnswer();
+    }, [perguntas]);
 
     useEffect(() => {
         const items = document.getElementsByClassName("itemImg");
@@ -177,8 +185,13 @@ export default () => {
                                     </div>
                                     <details className="answers">
                                         <summary><span>Repostas:</span> <RxTriangleDown /></summary>
-                                        <p>{item._id}</p>
-                                        <button onClick={handleAnswer}>click</button>
+                                            <p>okok</p>
+                                            {respostas[item._id] && respostas[item._id].map((obj, index) => (
+                                                <div>
+                                                    <p key={index}><span>Resposta:</span> {obj.message}</p>
+                                                    <p key={index+" "}><span>By:</span> {obj.nick}</p>
+                                                </div>
+                                            ))}
                                     </details>
                                 </div>
                             ))}

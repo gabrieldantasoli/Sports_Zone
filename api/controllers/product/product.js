@@ -34,6 +34,15 @@ export const getProducts = async (req, res, next) => {
     }
 }
 
+export const getProduct = async (req, res, next) => {
+  try {
+    const product = await Product.findById(req.params.id);
+    res.status(200).send(product);
+  } catch (err) {
+    next(err);
+  }
+}
+
 export const deleteProduct = async (req, res, next) => {
     try {
       await Product.findByIdAndDelete(req.params.id);

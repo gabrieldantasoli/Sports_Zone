@@ -31,8 +31,8 @@ export default () => {
             <h2>Mais Vendidos :</h2>
             <div className="categoriaSlide">
                 {produtos.map((produto, index) => (
-                <Icon key={index} img={produto.img_preview} />
-            ))}
+                    <Icon key={index} produto={produto} />
+                ))}
             </div>
             
         </section>

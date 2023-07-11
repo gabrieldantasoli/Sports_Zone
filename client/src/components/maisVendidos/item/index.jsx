@@ -3,13 +3,16 @@ import React from 'react';
 //IMPORTANDO O CSS
 import './item.css';
 
-export default ({img}) => {
+export default ({produto}) => {
 
     return (
         <div className='maisVendidos'>
-            <div className='img'>
-                <img src={img} alt="Product" />
-            </div>
+                <a href={`/product/${produto._id}`}>
+                <div className='img'>
+                    <img src={produto.img_preview} alt="Product" />
+                </div>
+            </a>
+            
         </div>
     )
 }

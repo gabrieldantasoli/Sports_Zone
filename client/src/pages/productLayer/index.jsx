@@ -9,7 +9,9 @@ import { useParams } from 'react-router-dom';
 import { AiOutlineStar } from 'react-icons/ai';
 import { GrLocation } from 'react-icons/gr';
 import { BiSearchAlt } from 'react-icons/bi';
+import { RxTriangleDown } from 'react-icons/rx';
 import { AuthContext } from '../../context/authContext';
+
 
 export default () => {
 
@@ -34,6 +36,17 @@ export default () => {
             setProduto(produto);
         } catch (err) {
             toast.error("Falha ao acessar banco de dados!");
+        }
+    }
+
+    const handleAnswer = async () => {
+        try {
+            const answers = {};
+            for (let item in perguntas) {
+                // console.log(perguntas[item]);
+            }
+        } catch (err) {
+            toast.error(err.message);
         }
     }
 
@@ -163,8 +176,9 @@ export default () => {
                                         <p><span>By: </span> {item.nick} </p>
                                     </div>
                                     <details className="answers">
-                                        <summary>Repostas para essa pergunta: </summary>
-                                        <p>nada aqui</p>
+                                        <summary><span>Repostas:</span> <RxTriangleDown /></summary>
+                                        <p>{item._id}</p>
+                                        <button onClick={handleAnswer}>click</button>
                                     </details>
                                 </div>
                             ))}

@@ -213,6 +213,10 @@ section.product_layer .perguntas .area .perguntaItem .content span {
     font-weight: 700;
 }
 
+.answers.active {
+    background-color: red;
+}
+
 /* Product Answers styles end's here */
 
 

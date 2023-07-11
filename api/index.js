@@ -7,9 +7,11 @@ import cors from "cors";
 import authRoute from "./routes/user/auth.js";
 import userRoute from "./routes/user/users.js";
 import userAdress from "./routes/user/address.js";
+
 import routerCategory from "./routes/product/category.js";
 import routerProduct from "./routes/product/product.js";
 import routerQuestion from "./routes/product/question.js";
+import routerAnswer from "./routes/product/answer.js";
 
 
 const app = express();
@@ -40,6 +42,7 @@ app.use("/address", userAdress);
 app.use("/category", routerCategory);
 app.use("/product", routerProduct);
 app.use("/question", routerQuestion);
+app.use("/answer", routerAnswer);
 
 app.use((err, req, res, next) => {
     const errorStatus = err.status || 500;

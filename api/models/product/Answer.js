@@ -2,9 +2,9 @@ import mongoose from "mongoose";
 
 const ProductAssessmentAnswer = new mongoose.Schema(
     {   
-        assessment_id: {
+        question_id: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "Assessment",
+            ref: "Question",
             required: true,
         },
         message : {

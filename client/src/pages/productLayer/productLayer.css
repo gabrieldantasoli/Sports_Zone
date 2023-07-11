@@ -40,8 +40,7 @@ section.product_layer .itemImg.active {
                 0 0 15px var(--blue-color);
 }
 
-
-.imgPreview {
+section.product_layer .imgPreview {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -52,4 +51,116 @@ section.product_layer .itemImg.active {
     border-radius: 1rem;
     padding: 1rem;
     border: 2px solid #000;
+}
+
+section.product_layer .info {
+    max-width: 600px;
+    margin: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+section.product_layer .info h2 {
+    color: var(--blue-color);
+    font-size: 2rem;
+}
+
+section.product_layer .info .brand {
+    font-weight: 700;
+}
+
+section.product_layer .info .stars {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.6rem;
+}
+
+section.product_layer .info .valor {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem;
+}
+
+section.product_layer .info .about {
+    padding: 1rem;
+}
+
+section.product_layer .info .about p {
+    font-weight: 800;
+    font-size: 1.4rem;
+}
+
+section.product_layer .info .about li {
+    list-style: disc;
+    margin-left: 1rem;
+}
+
+
+
+section.product_layer .buy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 30vw;
+    max-width: 400px;
+    padding-left: 2rem;
+    border-left: 2px solid #000;
+}
+
+section.product_layer .buy .value {
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+section.product_layer .buy .entrega {
+    font-weight: 600;
+}
+
+section.product_layer .buy .entrega span {
+    color: var(--blue-color);
+}
+
+section.product_layer .buy .estoque {
+    font-weight: 600;
+    padding: 1rem 0;
+}
+
+section.product_layer .buy .quantidade {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin: 1rem 0;
+    font-weight: 600;
+}
+
+section.product_layer .buy .quantidade input {
+    width: 100px;
+    padding: 0.3rem;
+}
+
+section.product_layer .buy button {
+    width: 300px;
+    margin: 1rem auto;
+    padding: 0.6rem;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 2rem;
+    border: 2px solid #000;
+}
+
+section.product_layer .buy #add {
+    background-color: #f2eb29;
+}
+
+section.product_layer .buy #buy {
+    background-color: #fba300;
+}
+
+section.product_layer .buy button:hover {
+    box-shadow: 1px -1px 10px #999;
 }

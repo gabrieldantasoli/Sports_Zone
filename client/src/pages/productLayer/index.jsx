@@ -73,13 +73,15 @@ export default () => {
                 <div className="info">
                     <div className="name">
                         <h2>{produto.name}</h2>
-                        <p>Marca: {produto.brand}</p>
+                        <p className='brand'>Marca: {produto.brand}</p>
                         <div className="stars">
-                            <AiOutlineStar />
-                            <AiOutlineStar />
-                            <AiOutlineStar />
-                            <AiOutlineStar />
-                            <AiOutlineStar />
+                            <div className="content">
+                                <AiOutlineStar />
+                                <AiOutlineStar />
+                                <AiOutlineStar />
+                                <AiOutlineStar />
+                                <AiOutlineStar />
+                            </div>
                             <p>40 Avaliações de clientes</p>
                         </div>
                         <hr />
@@ -87,8 +89,8 @@ export default () => {
                     <div className="valor">
                         <p>Valor: R${produto.value}</p>
                         <p>Categoria: {produto.category}</p>
-                        <hr />
                     </div>
+                    <hr />
                     <div className="about">
                         <p>Sobre este item</p>
                         <ul>
@@ -100,15 +102,19 @@ export default () => {
                     </div>
                 </div>
                 <div className="buy">
-                    <p><span>R$</span>{produto.value}</p>
-                    <p><span>Entrega {produto.delivery === 0 ? "Grátis" : ""}:</span> <span>15 - 20 de julho</span></p>
+                    <p className='value'><span>Valor: R$</span>{produto.value}</p>
+                    <p className='entrega'><span>Entrega: </span>{produto.delivery === 0 ? "Grátis" : `R$${produto.delivery}`}  </p>
                     <p><GrLocation /> Enviar para 58380000</p>
                     <p className="estoque">Em estoque: {produto.stock}</p>
-                    <input type="number" name="quantidade" id="quantidade" value={quantidade} min={1} max={produto.stock} onChange={(e) => setQuantidade(e.target.value > produto.stock ? produto.stock : e.target.value)} />
-                    <button>Adicionar ao carrinho</button>
-                    <button>Comprar agora</button>
+                    <div className="quantidade">
+                        <label htmlFor="quantidade">Quantidade : </label>
+                        <input type="number" name="quantidade" id="quantidade" value={quantidade} min={1} max={produto.stock} onChange={(e) => setQuantidade(e.target.value > produto.stock ? produto.stock : e.target.value)} />
+                    </div>
+                    
+                    <button id='add'>Adicionar ao carrinho</button>
+                    <button id='buy'>Comprar agora</button>
                     <hr />
-                    <button>Favoritar</button>
+                    <button id='fav'>Favoritar</button>
                 </div>
             </div>
             <div className="perguntas">

@@ -1,3 +1,5 @@
+/* Product informations styles start's here */
+
 section.product_layer {
     background-color: var(--primary-back-color);
 }
@@ -164,3 +166,56 @@ section.product_layer .buy #buy {
 section.product_layer .buy button:hover {
     box-shadow: 1px -1px 10px #999;
 }
+
+/* Product informations styles end's here */
+
+
+/* Product Answers styles start's here */
+
+section.product_layer .perguntas {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-top: 2px solid #000;
+    margin: auto;
+    margin-top: 1rem;
+    max-width: 1800px;
+    padding: 1.5rem 1rem; 
+}
+
+section.product_layer .perguntas .area {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+section.product_layer .perguntas .area > div {
+    width: 100%;
+}
+
+section.product_layer .perguntas .area > div > div {
+    width: 100%;
+    max-width: 900px;
+    margin: 1rem auto;
+    border: 2px solid #000;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+section.product_layer .perguntas .area .perguntaItem .content {
+    display: flex;
+    justify-content: space-between;
+}
+
+section.product_layer .perguntas .area .perguntaItem .content span {
+    font-weight: 700;
+}
+
+/* Product Answers styles end's here */
+
+
+/* Product Avaliations styles start's here */
+
+/* Product Avaliations styles end's here */

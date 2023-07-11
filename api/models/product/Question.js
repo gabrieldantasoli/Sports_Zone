@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const ProductAssessment = new mongoose.Schema(
+const ProductQuestion = new mongoose.Schema(
     {   
         product_id: {
             type: mongoose.Schema.Types.ObjectId,
@@ -11,12 +11,6 @@ const ProductAssessment = new mongoose.Schema(
             type: String,
             required: true,
         }, 
-        assessment : {
-            type: Number,
-            required: true,
-            min: 1,
-            max: 5
-        }, 
         nick : {
             type: String,
             required: true,
@@ -25,4 +19,4 @@ const ProductAssessment = new mongoose.Schema(
     { timestamps: true }
 ); 
 
-export default mongoose.model("ProductAssessment", ProductAssessment);
+export default mongoose.model("ProductQuestion", ProductQuestion);

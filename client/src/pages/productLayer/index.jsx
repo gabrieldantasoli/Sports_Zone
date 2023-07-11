@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Header } from "../../components/";
 
 //IMPORTANDO O CSS
@@ -8,9 +8,12 @@ import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
 import { AiOutlineStar } from 'react-icons/ai';
 import { GrLocation } from 'react-icons/gr';
-
+import { BiSearchAlt } from 'react-icons/bi';
+import { AuthContext } from '../../context/authContext';
 
 export default () => {
+
+    const { user } = useContext(AuthContext);
 
     const { id } = useParams();
 
@@ -18,14 +21,37 @@ export default () => {
     const [quantidade, setQuantidade] = useState(1);
     const [activeImage, setActiveImage] = useState('');
 
+    const [pergunta, setPergunta] = useState("");
+    const [perguntas, setPerguntas] = useState([]);
+
     const handleClick = async () => {
         try {
             const res = await axios.get(`/product/${id}`);
+            const questions = await axios.get(`/question/${id}`);
             const produto = res.data;
+            const questionsRes = questions.data;
+            setPerguntas(questionsRes)
             setProduto(produto);
         } catch (err) {
             toast.error("Falha ao acessar banco de dados!");
         }
+    }
+
+    const createQuestion = async () => {
+        const question = {
+            "product_id": id,
+            "message": pergunta,
+            "nick": user.username
+        }
+        try {
+            await axios.put("/question", question);
+            setPergunta("");
+            toast.success("Pergunta cadastrada!");
+            handleClick();
+        } catch (err) {
+            toast.error(err.message)
+        }
+        
     }
 
     const setActive = (e) => {
@@ -118,7 +144,33 @@ export default () => {
                 </div>
             </div>
             <div className="perguntas">
-
+                <div className="search">
+                    <label htmlFor="pergunta">Procurando informações específicas?</label>
+                    <div className="search">
+                        <button><BiSearchAlt /></button>
+                        <input type="text" name="pergunta" id="pergunta" value={pergunta} onChange={(e) => setPergunta(e.target.value)} />
+                        { pergunta.trim() != "" ? <button onClick={createQuestion}>Criar pergunta</button> : ""} 
+                    </div>
+                </div>
+                
+                <div className="area">
+                    { perguntas.length == 0 ? "Nenhuma pergunta feita até o momento" :  (
+                        <div>
+                            {perguntas.map((item, index) => (
+                                <div className="perguntaItem">
+                                    <div className="content">
+                                        <p><span>Pergunta: </span>{item.message}</p>
+                                        <p><span>By: </span> {item.nick} </p>
+                                    </div>
+                                    <details className="answers">
+                                        <summary>Repostas para essa pergunta: </summary>
+                                        <p>nada aqui</p>
+                                    </details>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                </div>
             </div>
             <div className="avaliacoes">
 

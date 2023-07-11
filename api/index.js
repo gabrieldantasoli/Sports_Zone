@@ -9,6 +9,7 @@ import userRoute from "./routes/user/users.js";
 import userAdress from "./routes/user/address.js";
 import routerCategory from "./routes/product/category.js";
 import routerProduct from "./routes/product/product.js";
+import routerQuestion from "./routes/product/question.js";
 
 
 const app = express();
@@ -38,7 +39,7 @@ app.use("/user", userRoute);
 app.use("/address", userAdress);
 app.use("/category", routerCategory);
 app.use("/product", routerProduct);
-
+app.use("/question", routerQuestion);
 
 app.use((err, req, res, next) => {
     const errorStatus = err.status || 500;

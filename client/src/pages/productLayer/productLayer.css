@@ -213,6 +213,93 @@ section.product_layer .perguntas .area .perguntaItem .content span {
     font-weight: 700;
 }
 
+section.product_layer .perguntas .area .resposta  {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5rem;
+}
+
+section.product_layer .perguntas .area .resposta:nth-child(odd) {
+    background-color: #ddd;
+}
+
+section.product_layer .perguntas .area .resposta span {
+    font-weight: 700;
+}
+
+section.product_layer .perguntas .area .answers .red {
+    font-weight: 700;
+    color: var(--red-color);
+}
+
+section.product_layer .perguntas .answerInput {
+    display: flex;
+    justify-content: center;
+    margin: 0.8rem;
+    gap: 1.5rem;
+}
+
+section.product_layer .perguntas .answerInput input {
+    padding: 0.5rem 0.7rem;
+    width: 80%;
+    max-width: 350px;
+    border-radius: 0.5rem;
+    border: 2px solid #000;
+}
+
+section.product_layer .perguntas .answerInput button {
+    background-color: var(--blue-color);
+    color: var(--primary-back-color);
+    font-weight: 800;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    font-size: 1.1rem;
+}
+
+section.product_layer .perguntas .answerInput button:hover {
+    box-shadow: 0 0 5px var(--blue-color),
+                0 0 10px var(--blue-color);
+}
+
+section.product_layer .search label {
+    font-weight: 700;
+    font-size: 1.4rem;
+}
+
+section.product_layer .search input {
+    padding: 0.5rem 0.7rem;
+    width: 80%;
+    max-width: 350px;
+    border-radius:  0 0.5rem 0.5rem 0;
+    border: 2px solid #000;
+}
+
+section.product_layer .search .search_content {
+    display: flex;
+    margin: 0.5rem 0;
+}
+
+section.product_layer .search button.search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0.4rem;
+    border: 2px solid #000;
+    border-radius: 0.5rem 0 0 0.5rem;
+    background-color: var(--blue-color);
+    font-size: 1.6rem;
+}
+
+section.product_layer .search button.pergunta {
+    margin-left: 1rem;
+    width: 200px;
+    font-weight: 600;
+    background-color: var(--yellow-color);
+    border: 2px solid #000;
+    border-radius: 0.5rem;
+}
+
 .answers.active {
     background-color: red;
 }

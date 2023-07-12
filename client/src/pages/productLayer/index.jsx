@@ -24,6 +24,7 @@ export default () => {
     const [activeImage, setActiveImage] = useState('');
 
     const [pergunta, setPergunta] = useState("");
+    const [resposta, setResposta] = useState("");
     const [perguntas, setPerguntas] = useState([]);
     const [respostas, setRespostas] = useState({});
 
@@ -40,6 +41,20 @@ export default () => {
         }
     }
 
+    const handleSearch = async (text) => {
+        try {
+            if (text.trim() == "") {
+                handleClick();
+            } else {
+                const questions = await axios.get(`/question/regex/${text.trim()}/${id}`);
+                const questionsRes = questions.data;
+                setPerguntas(questionsRes)
+            }
+        } catch (err) {
+            toast.error("Falha ao acessar banco de dados!");
+        }
+    }
+
     const handleAnswer = async () => {
         try {
             const answers = {};
@@ -47,7 +62,6 @@ export default () => {
                 const answer =  await (await axios.get(`/answer/${perguntas[item]._id}`)).data;
                 answers[perguntas[item]._id] = answer;
             }
-            console.log(answers);
             setRespostas(answers);
         } catch (err) {
             toast.error(err.message);
@@ -68,7 +82,22 @@ export default () => {
         } catch (err) {
             toast.error(err.message)
         }
-        
+    }
+
+    const responder = async (p_id) => {
+        const answer = {
+            "question_id": p_id,
+            "message": resposta,
+            "nick": user.username
+        }   
+        try {
+            await axios.put("/answer", answer);
+            setResposta("");
+            setRespostas({});
+            handleAnswer();
+        } catch (err) {
+            toast.error(err.message);
+        }
     }
 
     const setActive = (e) => {
@@ -167,10 +196,10 @@ export default () => {
             <div className="perguntas">
                 <div className="search">
                     <label htmlFor="pergunta">Procurando informações específicas?</label>
-                    <div className="search">
-                        <button><BiSearchAlt /></button>
-                        <input type="text" name="pergunta" id="pergunta" value={pergunta} onChange={(e) => setPergunta(e.target.value)} />
-                        { pergunta.trim() != "" ? <button onClick={createQuestion}>Criar pergunta</button> : ""} 
+                    <div className="search_content">
+                        <button className='search' onClick={() => handleSearch(pergunta)}><BiSearchAlt /></button>
+                        <input type="text" name="pergunta" id="pergunta" placeholder='Busque ou faça oerguntas' value={pergunta} onChange={(e) => setPergunta(e.target.value)} />
+                        { pergunta.trim() != "" ? <button onClick={createQuestion} className='pergunta'>Criar pergunta</button> : ""} 
                     </div>
                 </div>
                 
@@ -185,9 +214,12 @@ export default () => {
                                     </div>
                                     <details className="answers">
                                         <summary><span>Repostas:</span> <RxTriangleDown /></summary>
-                                            <p>okok</p>
+                                            <div className="answerInput">
+                                                <input type="text" placeholder='Responda a questão' name="resposta" id="resposta" value={resposta} onChange={(e) => setResposta(e.target.value)} />
+                                                <button onClick={() => responder(item._id)}>Responder</button>
+                                            </div>
                                             {respostas[item._id] && respostas[item._id].map((obj, index) => (
-                                                <div>
+                                                <div className='resposta'>
                                                     <p key={index}><span>Resposta:</span> {obj.message}</p>
                                                     <p key={index+" "}><span>By:</span> {obj.nick}</p>
                                                 </div>
@@ -200,7 +232,7 @@ export default () => {
                 </div>
             </div>
             <div className="avaliacoes">
-
+                
             </div>
         </section>
     )

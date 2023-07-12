@@ -300,8 +300,83 @@ section.product_layer .search button.pergunta {
     border-radius: 0.5rem;
 }
 
-.answers.active {
+section.product_layer .answers.active {
     background-color: red;
+}
+
+section.product_layer .avaliacaoItem {
+    display: flex;
+    justify-content: space-around;
+    padding: 0.7rem;
+    margin: 0.7rem auto;
+    width: 90%;
+    max-width: 1800px;
+    gap: 1rem;
+}
+
+section.product_layer .avaliacaoItem:nth-child(odd) {
+    background-color: #ddd;
+}
+
+section.product_layer .avaliacaoItem span {
+    font-weight: 700;
+}
+
+section.product_layer .avaliacoes {
+    padding: 1rem 0;
+}
+
+section.product_layer .avaliacoes h3 {
+    width: 90%;
+    max-width: 1800px;
+    margin: 1rem auto;
+}
+
+section.product_layer .avaliacoes hr {
+    width: 100%;
+    height: 1px;
+    max-width: 1800px;
+    margin: auto;
+}
+
+section.product_layer h3 {
+    width: 100%;
+    max-width: 1800px;
+    font-weight: 800;
+    font-size: 1.8rem;
+    margin: 1rem auto;
+}
+
+section.product_layer .nenhum {
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.avaliacaoItem .avaliacoesStars:nth-child(3) {
+    display: flex;
+    align-items: center;
+    width: 100px;
+    gap: 0.3rem;
+}
+
+.avaliacaoItem p:nth-child(2) {
+    display: flex;
+    align-items: center;
+    width: 200px;
+    gap: 1rem;
+}
+
+.avaliacaoItem p:nth-child(1) {
+    width: calc(100% - 200px);
+}
+
+.avaliacoesStars {
+
+}
+
+.avaliacoesStars *:nth-child(n+6) {
+    display: none;
 }
 
 /* Product Answers styles end's here */

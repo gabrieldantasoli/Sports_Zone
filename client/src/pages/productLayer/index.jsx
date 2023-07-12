@@ -6,11 +6,12 @@ import './productLayer.css';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
-import { AiOutlineStar } from 'react-icons/ai';
+import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { GrLocation } from 'react-icons/gr';
-import { BiSearchAlt } from 'react-icons/bi';
+import { BiSearchAlt, BiSolidStarHalf } from 'react-icons/bi';
 import { RxTriangleDown } from 'react-icons/rx';
 import { AuthContext } from '../../context/authContext';
+
 
 
 export default () => {
@@ -28,14 +29,29 @@ export default () => {
     const [perguntas, setPerguntas] = useState([]);
     const [respostas, setRespostas] = useState({});
 
+    const [avaliacoes, setAvaliacoes] = useState([])
+    const [media, setMedia] = useState(0);
+
+
     const handleClick = async () => {
         try {
             const res = await axios.get(`/product/${id}`);
             const questions = await axios.get(`/question/${id}`);
+            const avaliacoes = await axios.get(`/assessment/${id}`)
             const produto = res.data;
             const questionsRes = questions.data;
+            const avaliacoesRes = avaliacoes.data;
+
+            let somaAssessment = 0;
+            for (let i = 0; i < avaliacoesRes.length; i++) {
+                somaAssessment += avaliacoesRes[i].assessment;
+            }
+            const mediaAssessment = somaAssessment / avaliacoesRes.length;
+
+            setMedia(mediaAssessment);
             setPerguntas(questionsRes)
             setProduto(produto);
+            setAvaliacoes(avaliacoesRes);
         } catch (err) {
             toast.error("Falha ao acessar banco de dados!");
         }
@@ -151,14 +167,16 @@ export default () => {
                         <h2>{produto.name}</h2>
                         <p className='brand'>Marca: {produto.brand}</p>
                         <div className="stars">
-                            <div className="content">
-                                <AiOutlineStar />
-                                <AiOutlineStar />
-                                <AiOutlineStar />
-                                <AiOutlineStar />
-                                <AiOutlineStar />
+                            <div className='avaliacoesStars'>
+                                {Array.from({ length: parseInt(media) }, (_, index) => (
+                                    <AiFillStar />
+                                ))}
+                                {media - parseInt(media) > 0 ? <BiSolidStarHalf /> : ""}
+                                {Array.from({ length: (5 - parseInt(media)) }, (_, index) => (
+                                    <AiOutlineStar />
+                                ))}
                             </div>
-                            <p>40 Avaliações de clientes</p>
+                            <p>{avaliacoes.length} Avaliações de clientes</p>
                         </div>
                         <hr />
                     </div>
@@ -234,6 +252,24 @@ export default () => {
             <div className="avaliacoes">
                 <hr />
                 <h3>avaliações</h3>
+                <div className="avalicoes">
+                    { avaliacoes.length == 0 ? <p className='nenhum'>Nenhuma avaliação ainda. Seja o primeiro !!!</p> : ""}
+                    {avaliacoes && avaliacoes.map((obj, index) => (
+                        <div className="avaliacaoItem">
+                            <p key={index}><span>Resposta:</span> {obj.message}</p>
+                            <p key={index+" "}><span>By:</span> {obj.nick}</p>
+                            <div className="avaliacoesStars">
+                                {Array.from({ length: parseInt(obj.assessment) }, (_, index) => (
+                                    <AiFillStar />
+                                ))}
+                                {obj.assessment - parseInt(obj.assessment) > 0 ? <BiSolidStarHalf /> : ""}
+                                {Array.from({ length: (5 - parseInt(obj.assessment)) }, (_, index) => (
+                                    <AiOutlineStar />
+                                ))}
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
         </section>
     )

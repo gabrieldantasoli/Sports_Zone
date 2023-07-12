@@ -12,6 +12,7 @@ import routerCategory from "./routes/product/category.js";
 import routerProduct from "./routes/product/product.js";
 import routerQuestion from "./routes/product/question.js";
 import routerAnswer from "./routes/product/answer.js";
+import routerAssessment from "./routes/product/assessment.js";
 
 
 const app = express();
@@ -43,6 +44,7 @@ app.use("/category", routerCategory);
 app.use("/product", routerProduct);
 app.use("/question", routerQuestion);
 app.use("/answer", routerAnswer);
+app.use("/assessment", routerAssessment);
 
 app.use((err, req, res, next) => {
     const errorStatus = err.status || 500;

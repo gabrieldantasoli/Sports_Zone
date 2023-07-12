@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const ProductAssessmentAnswer = new mongoose.Schema(
+const ProductQuestionAnswer = new mongoose.Schema(
     {   
         question_id: {
             type: mongoose.Schema.Types.ObjectId,
@@ -19,4 +19,4 @@ const ProductAssessmentAnswer = new mongoose.Schema(
     { timestamps: true }
 ); 
 
-export default mongoose.model("ProductAssessmentAnswer", ProductAssessmentAnswer);
+export default mongoose.model("ProductQuestionAnswer", ProductQuestionAnswer);

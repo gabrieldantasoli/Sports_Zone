@@ -232,7 +232,8 @@ export default () => {
                 </div>
             </div>
             <div className="avaliacoes">
-                
+                <hr />
+                <h3>avaliações</h3>
             </div>
         </section>
     )

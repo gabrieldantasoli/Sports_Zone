@@ -30,8 +30,10 @@ export default () => {
             <h2>Navegue por categorias :</h2>
             <div className="categoriaSlide">
                 {categorias.map((categoria, index) => (
-                <CategoriaIcon key={index} img={categoria.img} name={categoria.name} />
-            ))}
+                    <a href={`/category/${categoria.link}`}>
+                        <CategoriaIcon key={index} img={categoria.img} name={categoria.name} />
+                    </a>
+                ))}
             </div>
             
         </section>

@@ -1,0 +1,98 @@
+
+.productCatedory .categoryLogo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    background-color: var(--primary-back-color);
+}
+
+.productCatedory .categoryLogo img {
+    width: 200px;
+}
+
+.productCatedory .categoryLogo h2 {
+    font-size: 4rem;
+    color: var(--blue-color);
+}
+
+.productCatedory .categoryProductsSection {
+    margin: auto;
+    max-width: 1800px;
+    width: 100vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.productCatedory .categoryProductsSection .categoryItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    gap: 0.6rem;
+    width: 300px;
+    height: 400px;
+    overflow: hidden;
+    background-color: var(--primary-back-color);
+    border: 2px solid #000;
+    border-radius: 0.8rem;
+}
+
+.productCatedory .categoryProductsSection .categoryItem img {
+    border-radius: 0.8rem;
+    width: 280px;
+    aspect-ratio: 1/1;
+}
+
+.productCatedory .categoryProductsSection .categoryItem .off {
+    background-color: red;
+    padding: 0.2rem 0.8rem;
+    font-weight: 800;
+    color: #fff;
+    width: 80px;
+    border-radius: 0.4rem;
+}
+
+
+
+
+
+
+@media (max-width: 1000px) {
+    .productCatedory .categoryProductsSection .categoryItem img {
+        width: 200px;
+        aspect-ratio: 1/1;
+    }
+    
+    .productCatedory .categoryProductsSection .categoryItem .off {
+        background-color: red;
+        padding: 0.2rem 0.8rem;
+        font-weight: 800;
+        color: #fff;
+        width: 80px;
+        border-radius: 0.4rem;
+    }
+
+    .productCatedory .categoryProductsSection .categoryItem {
+        width: 220px;
+        height: 320px;
+    }
+}
+
+@media (max-width: 600px) {
+    .productCatedory .categoryLogo img {
+        width: 150px;
+    }
+    
+    .productCatedory .categoryLogo h2 {
+        font-size: 2rem;
+    }
+
+    .productCatedory .categoryLogo {
+        gap: 1rem;
+    }
+}

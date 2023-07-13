@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Home, ProductLayer, Login, Register, Cart } from '../pages';
+import { Home, ProductLayer, Login, Register, Cart, ProductCategory } from '../pages';
+
 
 export default () => {
     return(
@@ -10,6 +11,7 @@ export default () => {
             <Route path='/register' element={<Register />} />
             <Route path='/cart' element={<Cart />} />
             <Route path='/product/:id' element={<ProductLayer />} />
+            <Route path='/category/:name' element={<ProductCategory />} />
         </Routes>
     );
 };

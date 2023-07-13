@@ -13,7 +13,6 @@ import { RxTriangleDown } from 'react-icons/rx';
 import { AuthContext } from '../../context/authContext';
 
 
-
 export default () => {
 
     const { user } = useContext(AuthContext);
@@ -181,7 +180,7 @@ export default () => {
                         <hr />
                     </div>
                     <div className="valor">
-                        <p>Valor: R${produto.value}</p>
+                        <p>Valor: R${(produto.value * (1 - produto.discount/100)).toFixed(2)}</p>
                         <p>Categoria: {produto.category}</p>
                     </div>
                     <hr />
@@ -196,7 +195,7 @@ export default () => {
                     </div>
                 </div>
                 <div className="buy">
-                    <p className='value'><span>Valor: R$</span>{produto.value}</p>
+                    <p className='value'><span>Valor: R$</span>{(produto.value * (1 - produto.discount/100)).toFixed(2)}</p>
                     <p className='entrega'><span>Entrega: </span>{produto.delivery === 0 ? "Grátis" : `R$${produto.delivery}`}  </p>
                     <p><GrLocation /> Enviar para 58380000</p>
                     <p className="estoque">Em estoque: {produto.stock}</p>

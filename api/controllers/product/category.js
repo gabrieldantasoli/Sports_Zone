@@ -33,3 +33,12 @@ export const getCategorys = async (req, res, next) => {
       next(err);
     }
 }
+
+export const getCategory = async (req, res, next) => {
+  try {
+    const categorys = await Category.find({ link: req.params.name });
+    res.status(200).send(categorys);
+  } catch (err) {
+    next(err);
+  }
+}

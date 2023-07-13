@@ -7,3 +7,4 @@ export { default as PassBanner } from "./passBanner";
 export { default as LoginBar } from "./loginBar";
 export { default as Footer } from "./footer";
 export { default as CategoryItem } from "./categoryItem";
+export { default as ViewsSlider } from "./viewsSlider/slider";

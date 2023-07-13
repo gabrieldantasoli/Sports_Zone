@@ -35,6 +35,33 @@
     height: 280px;
 }
 
+.pass_banner .form button {
+    background-color: var(--yellow-color);
+    padding: 0.2rem 1rem;
+    font-weight: 700;
+    font-size: 1.4rem;
+    border: none;
+    border-radius: 0.5rem;
+    margin: 0 1rem;
+}
+
+.pass_banner .form {
+    display: flex;
+    justify-content: space-between;
+}
+
+.pass_banner .form label {
+    color: var(--primary-back-color);
+    font-weight: 500;
+    font-size: 1.4rem;
+}
+
+.pass_banner .form input {
+    width: 50px;
+    padding: 0.5rem 0 0.5rem 0.5rem;
+    font-weight: 600;
+    text-align: center;
+}
 
 
 @media (max-width: 1515px) {

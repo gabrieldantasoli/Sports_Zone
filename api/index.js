@@ -7,6 +7,7 @@ import cors from "cors";
 import authRoute from "./routes/user/auth.js";
 import userRoute from "./routes/user/users.js";
 import userAdress from "./routes/user/address.js";
+import routerViews from "./routes/user/views.js";
 
 import routerCategory from "./routes/product/category.js";
 import routerProduct from "./routes/product/product.js";
@@ -45,6 +46,7 @@ app.use("/product", routerProduct);
 app.use("/question", routerQuestion);
 app.use("/answer", routerAnswer);
 app.use("/assessment", routerAssessment);
+app.use("/views", routerViews);
 
 app.use((err, req, res, next) => {
     const errorStatus = err.status || 500;

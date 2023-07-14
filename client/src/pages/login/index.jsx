@@ -19,14 +19,28 @@ const Login = () => {
         e.preventDefault();
         dispatch({ type: "LOGIN_START" });
         try {
-            console.log(username);
-            console.log(password);
             const info = {
                 "username": `${username}`,
                 "password": `${password}`
             }
             const res = await axios.post("/auth/login", info);
-            console.log(res);
+            const userViews = await axios.get(`/views/get/${res.data.details._id}`);
+            if (userViews.data.length == 0) {
+                // console.log(res.data.details._id);
+                const data = {
+                    "user": `${res.data.details._id}`,
+                    "alimentos": 0,
+                    "equipamentos": 0,
+                    "vestuario": 0,
+                    "bebidas": 0,
+                    "suplementos": 0,
+                    "eletronicos": 0,
+                    "tenis": 0,
+                    "acessorios": 0,
+                    "ferramentas": 0
+                }
+                await axios.put("/views", data);
+            }
             dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
             navigate("/")
             toast.success("You are logged in!")

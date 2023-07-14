@@ -74,7 +74,7 @@ const Login = () => {
         </div>
         <div className="link_register">
             <span>Já tem conta ?</span>
-            <a href="/login">Loogin</a>
+            <a href="/login">Login</a>
         </div>
     </div>
     );

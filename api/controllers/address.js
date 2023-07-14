@@ -13,7 +13,7 @@ export const createUSerAddress = async (req, res, next) => {
     } catch (err) {
       next(err);
     }
-  };
+};
 
 export const updateUserAddress = async (req, res, next) => {
     try {

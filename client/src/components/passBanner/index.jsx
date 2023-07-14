@@ -13,7 +13,8 @@ export default () => {
 
     const changePass = async () => {
         const changePass = {
-            pass: !user.pass
+            pass: !user.pass,
+            people_pass: qtdPessoas
         }
         try {
             await axios.put(`/user/${user._id}`, changePass);

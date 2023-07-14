@@ -19,6 +19,11 @@ const UserSchema = new mongoose.Schema(
             type: Boolean,
             required: false,
         },
+        people_pass: {
+            type: Number,
+            required: false,
+            min: 0
+        },
         active_address: {
             type: String,
             required: false

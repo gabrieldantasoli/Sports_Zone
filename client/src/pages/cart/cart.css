@@ -27,3 +27,85 @@ section.cart .notLogged .authenticate a {
     font-size: 1.2rem;
     text-decoration: underline;
 }
+
+
+
+section.cart .shoppings {
+    display: flex;
+    flex-direction: column;
+}
+
+section.cart .shoppings .cartProduct {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0.75rem auto;
+    background-color: var(--primary-back-color);
+    display: flex;
+    padding: 1rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+section.cart .shoppings .cartProduct .img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    margin-left: 0.5rem;
+}
+
+section.cart .shoppings .cartProduct img {
+    height: 120px;
+}
+
+section.cart .shoppings .cartProduct .increment {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+section.cart .shoppings .cartProduct .increment button {
+    padding: 0.5rem;
+    background-color: #fff;
+    border: 2px solid #000;
+    border-radius: 0.5rem;
+    transition: 0.5s ease-in-out;
+}
+
+section.cart .shoppings .cartProduct .increment button:hover * {
+    color: #fff;
+}
+
+section.cart .shoppings .cartProduct .increment button:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+section.cart .shoppings .cartProduct .increment button * {
+    font-size: 1.5rem;
+}
+
+section.cart .shoppings .cartProduct .increment button:nth-child(4) {
+    margin-left: 1rem;
+}
+
+section.cart .shoppings .cartProduct .increment p {
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin: 0.5rem;
+}
+
+section.cart .shoppings .cartProduct .increment p span {
+    color: var(--red-color);
+}
+
+section.cart .shoppings .cartProduct .info p {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--red-color);
+    margin: 0.5rem;
+}
+
+section.cart .shoppings .cartProduct .info h4 {
+    font-size: 1.3rem;
+}

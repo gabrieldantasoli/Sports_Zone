@@ -6,6 +6,9 @@ import { AuthContext } from '../../context/authContext';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { LoadingContext } from '../../context/backendLoading';
+import { BsFillPlusCircleFill } from "react-icons/bs"
+import { AiFillDelete } from "react-icons/ai";
+import { BiSolidMinusCircle } from "react-icons/bi";
 
 export default () => {
   const { user } = useContext(AuthContext);
@@ -53,6 +56,7 @@ export default () => {
             window.location.reload();
         } catch (err) {
             toast.error(err.message);
+            modifyLoad({ type: "LOADING_END" }); 
         }
     } else {
         try {
@@ -64,6 +68,7 @@ export default () => {
             getProducts();
         } catch (err) {
             toast.error(err.message);
+            modifyLoad({ type: "LOADING_END" }); 
         }
     }
   }
@@ -82,27 +87,31 @@ export default () => {
             <Header />
             {user ? (
                 <div className="shoppings">
-                {Object.keys(linkProducts).map((key) => {
-                    const element = linkProducts[key];
-                    const product = products.find((item) => item.product_id === element._id);
-                    return (
-                    <div className="cartProduct" key={key}>
-                        <div className="img">
-                        <img src={element.img_preview} alt="product img" />
-                        </div>
-                        <div className="info">
-                        <h4>{element.name}</h4>
-                        <p>R${(element.value * (1 - element.discount / 100)).toFixed(2)}</p>
-                        <div className="increment">
-                            <button onClick={() => updateProductCart(product._id, product.qtd - 1)}>menos</button>
-                            {product && <p>Quantidade: {product.qtd}</p>}
-                            <button onClick={() => updateProductCart(product._id, product.qtd + 1)}>mais</button>
-                        </div>
-                        
-                        </div>
-                    </div>
-                    );
-                })}
+                    {Object.keys(linkProducts).map((key) => {
+                        const element = linkProducts[key];
+                        const product = products.find((item) => item.product_id === element._id);
+                        return (
+                            <div className="cartProduct" key={key}>
+                                <div className="img">
+                                    <a href={`/product/${product.product_id}`}>
+                                        <img src={element.img_preview} alt="product img" />
+                                    </a>
+                                </div>
+                                <div className="info">
+                                    <a href={`/product/${product.product_id}`}>
+                                        <h4>{element.name}</h4>
+                                        <p>R${(element.value * (1 - element.discount / 100)).toFixed(2)}</p>
+                                    </a>
+                                </div>
+                                <div className="increment">
+                                    <button onClick={() => updateProductCart(product._id, product.qtd - 1)}><BiSolidMinusCircle /></button>
+                                    {product && <p>Quantidade: <span>{product.qtd}</span></p>}
+                                    <button onClick={() => updateProductCart(product._id, product.qtd + 1)}><BsFillPlusCircleFill/></button>
+                                    <button onClick={() => updateProductCart(product._id, 0)}><AiFillDelete /></button>
+                                </div>
+                            </div>
+                        );
+                    })}
                 </div>
             ) : (
                 <div>

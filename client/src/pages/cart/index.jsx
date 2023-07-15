@@ -1,24 +1,42 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 //IMPORTANDO O CSS
 import './cart.css';
 import { Header } from '../../components';
-import { useNavigate } from 'react-router-dom';
+import { json, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/authContext';
 import { Login_img } from '../../imgs';
+import { toast } from 'react-toastify';
+import axios from 'axios';
 
 
 export default () => {
 
-    const navigate = useNavigate();
     const { user } = useContext(AuthContext);
+
+    const [products, setProducts] = useState([]);
+
+    const getUserCartProducts = async () => {
+        if (user != null) {
+            try {
+                const res = await axios.get(`/cart/${user._id}`);
+                setProducts(res.data)
+            } catch (err) {
+                toast.error(err.message);
+            }
+        }
+    }
+
+    useEffect(() => {
+        getUserCartProducts();
+    }, []);
 
     return (
         <section className='cart'>
             <Header />
             { user ? (
                 <div className='shoppings'>
-                    You are logged!
+                    
                 </div>
             ) : (
                 <div >

@@ -42,6 +42,7 @@ const Login = () => {
                 await axios.put("/views", data);
             }
             dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
+            console.log(res.data.details);
             navigate("/")
             toast.success("You are logged in!")
         } catch (err) {

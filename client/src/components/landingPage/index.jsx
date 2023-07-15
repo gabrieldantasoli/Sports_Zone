@@ -14,7 +14,7 @@ export default () => {
 
     const handleClick = async (e) => {
         e.preventDefault();
-        dispatch({ type: "LOGIN_START" });
+        dispatch({ type: "LOGOUT" });
     }
 
     return (

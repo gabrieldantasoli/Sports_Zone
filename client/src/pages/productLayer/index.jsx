@@ -119,6 +119,18 @@ export default () => {
         const key = e.target.getAttribute('data-key');
         setActiveImage(produto.img_gallery[key]);
     }
+
+    const incrementViews = async () => {
+        try {
+            const userViews = await axios.get(`/views/get/${user._id}`);
+            const data = {
+                [produto.category]: userViews.data[0][produto.category] + 1,
+              };
+            await axios.put(`/views/${user._id}`,data);
+        } catch (err) {
+            console.log(err);
+        }
+    }
         
     useEffect(() => {
         handleClick();
@@ -127,6 +139,10 @@ export default () => {
     useEffect(() => {
         handleAnswer();
     }, [perguntas]);
+
+    useEffect(() => {
+        incrementViews();
+    }, [produto]);
 
     useEffect(() => {
         const items = document.getElementsByClassName("itemImg");

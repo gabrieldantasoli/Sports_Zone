@@ -35,7 +35,7 @@ section.cart .shoppings {
     flex-direction: column;
 }
 
-section.cart .shoppings .cartProduct {
+section.cart .shoppings .cartProduct, .emptyCart{
     width: 100%;
     max-width: 1200px;
     margin: 0.75rem auto;
@@ -108,4 +108,67 @@ section.cart .shoppings .cartProduct .info p {
 
 section.cart .shoppings .cartProduct .info h4 {
     font-size: 1.3rem;
+}
+
+section.cart .totalPrice {
+    width: 100%;
+    background-color: var(--red-color);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 1rem;
+}
+
+section.cart .totalPrice .total {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--secondary-back-color);
+}
+
+section.cart .totalPrice .total span {
+    color: var(--primary-back-color);
+}
+
+section.cart .totalPrice button {
+    color: var(--primary-back-color);
+    border: 3px solid var(--primary-back-color);
+    background-color: transparent;
+    font-weight: 800;
+    font-size: 1.3rem;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    transition: 0.5s ease-in-out;
+}
+
+section.cart .totalPrice button:hover {
+    background-color: var(--primary-back-color);
+    color: var(--red-color);
+    box-shadow: 0 0 5px #fff;
+}
+
+.emptyCart{
+    width: 100%;
+    max-width: 1200px;
+    background-color: transparent;
+    margin: 0.75rem auto;
+    margin-top: 5rem;
+    display: flex;
+    padding: 1rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.emptyCart p {
+    width: 100%;
+    text-align: center;
+    font-weight: 900;
+    font-size: 5rem;
+    color: var(--red-color);
+}
+
+.emptyCart p span {
+    margin-left: 2rem;
 }

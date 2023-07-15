@@ -17,6 +17,7 @@ export default () => {
 
   const [products, setProducts] = useState([]);
   const [linkProducts, setLinkProducts] = useState({});
+  const [total, setTotal] = useState(0);
 
   const getUserCartProducts = async () => {
     modifyLoad({ type: "LOADING_START" }); 
@@ -73,6 +74,10 @@ export default () => {
     }
   }
 
+  const handleBuy = async () => {
+    alert("Comprados");
+  }
+
   useEffect(() => {
     getUserCartProducts();
   }, []);
@@ -81,10 +86,30 @@ export default () => {
     getProducts();
   }, [products]);
 
+  useEffect(() => {
+    // Calcula o total da compra sempre que houver alteração nos produtos ou em suas quantidades
+    let totalPrice = 0;
+    for (const item of products) {
+      const product = linkProducts[item.product_id];
+      if (product) { 
+        totalPrice += product.value * item.qtd;
+      }
+    }
+    setTotal(totalPrice);
+  }, [products, linkProducts]);
+  
+
   return (
         <section className="cart">
             { loading ? <Loading /> : <></>}
             <Header />
+            <div className="totalPrice">
+              <p className='total'>Valor total : <span>R${total.toFixed(2)}</span></p>
+              <button onClick={handleBuy}>Fechar Pedido</button>
+            </div>
+            { products.length  == 0 ? <div className="emptyCart">
+              <p>Empty Cart  <span>:(</span></p>
+            </div> : "" }
             {user ? (
                 <div className="shoppings">
                     {Object.keys(linkProducts).map((key) => {

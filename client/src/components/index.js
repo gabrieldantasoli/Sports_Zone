@@ -8,3 +8,4 @@ export { default as LoginBar } from "./loginBar";
 export { default as Footer } from "./footer";
 export { default as CategoryItem } from "./categoryItem";
 export { default as ViewsSlider } from "./viewsSlider/slider";
+export { default as Loading } from "./loading"; 

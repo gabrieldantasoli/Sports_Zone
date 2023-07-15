@@ -26,7 +26,7 @@ const Login = () => {
             const res = await axios.post("/auth/login", info);
             const userViews = await axios.get(`/views/get/${res.data.details._id}`);
             if (userViews.data.length == 0) {
-                // console.log(res.data.details._id);
+                // .log(res.data.details._id);
                 const data = {
                     "user": `${res.data.details._id}`,
                     "alimentos": 0,
@@ -42,7 +42,6 @@ const Login = () => {
                 await axios.put("/views", data);
             }
             dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
-            console.log(res.data.details);
             navigate("/")
             toast.success("You are logged in!")
         } catch (err) {

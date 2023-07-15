@@ -30,7 +30,7 @@ export const updateCartProduct = async (req, res, next) => {
 
 export const deleteCartProduct = async (req, res , next) => {
     try {
-        await CartProduct.find(req.params.id);
+        await CartProduct.findByIdAndDelete(req.params.id);
         res.status(200).json("Cart product has been deleted!")
     } catch (err) {
         next(err);

@@ -20,8 +20,6 @@ export default () => {
             await axios.get(`/views/get/${user._id}`)
           ).data[0];
 
-          console.log(userViews);
-
           const sortedProducts = res.data.sort((a, b) => calculateProductScore(b, userViews) - calculateProductScore(a, userViews));
           const limitedProducts = sortedProducts.slice(0, 15);
           setProdutos(limitedProducts);

@@ -60,7 +60,6 @@ export default () => {
         if (user != null) {
             try {
                 const res = await axios.get(`/cart/${user._id}/${produto._id}`);
-                console.log(res.data);
                 if (res.data.length == 0) {
                     const data = {
                         "user": user._id,

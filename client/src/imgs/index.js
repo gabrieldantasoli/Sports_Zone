@@ -6,3 +6,4 @@ export { default as Futebol_img } from "./futebol.jpg";
 export { default as Piscinas_img } from "./piscinas.jpg";
 export { default as Tenis_img } from "./tenis.jpg";
 export { default as Login_img } from "./login_icon.gif";
+export { default as Loading_img } from "./loading.gif";

@@ -47,7 +47,7 @@ export default () => {
     const handleClick = async () => {
         try {
             const res = await axios.get("/category");
-            const arrayCategorys = res.data.map((category) => category.name);
+            const arrayCategorys = res.data;
             await setElementosVisiveis(arrayCategorys);
         } catch (err) {
             toast.error("Falha ao acessar banco de dados!");
@@ -75,7 +75,6 @@ export default () => {
                     <HiLocationMarker />
                     <div className="to">
                         <button>Enviar para...</button>
-                        <p>58.380-000</p>
                     </div>
                 </div>
                 <div className="mainHeaderSearch">
@@ -119,7 +118,7 @@ export default () => {
                     <nav id='nav'>
                         <ul>
                             {elementosVisiveis.map((elemento, index) => (
-                                <li key={index}>{elemento}</li>
+                                <a href={`/category/${elemento.link}`} key={index}><li key={index}>{elemento.name}</li></a>
                             ))}
                         </ul>
                     </nav>

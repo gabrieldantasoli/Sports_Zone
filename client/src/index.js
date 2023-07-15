@@ -12,3 +12,26 @@ root.render(
     </AuthContextProvider>
   </BrowserRouter>
 );
+
+
+
+
+/**
+ *                       FRONT_END
+ *                   ____     ______________            *                 
+ *     *            /___/|   /_____________/|                             
+ *                  |   ||   |    _________|/    *                     
+ *       *          |   ||   |    | |______                            
+ *   *              |   ||   |    |/______/|                                          
+ *       *   ___    |   ||   |________    ||         *            
+ *          /  /|___|   ||    ________|   ||
+ *    *    |  |_/___|   ||   /________|   ||
+ *          \__________//    |____________|/    *
+ * 
+ * 
+ *  + Developed by : GabrielDantasOli
+ *  + GITHUB       : https://github.com/gabrieldantasoli
+ *  + Contact      : gabriel.dantas.oliveira@ccc.ufcg.edu.br
+ *  + JAVASCRIPT FOR ALL LIFE!
+ * 
+ **/ 

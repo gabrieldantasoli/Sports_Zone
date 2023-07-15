@@ -35,6 +35,10 @@ const UserAddress = new mongoose.Schema(
             type: String,
             required: true,
         }, 
+        cep : {
+            type: String,
+            required: true,
+        },
         reference : {
             type: String,
             required: false,

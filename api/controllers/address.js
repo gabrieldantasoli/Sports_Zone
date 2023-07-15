@@ -22,7 +22,6 @@ export const updateUserAddress = async (req, res, next) => {
             { $set: req.body },
             { new: true }
         );
-        Address.fin
         res.status(200).json(updateUerAddress);
     } catch (err) {
         next(err);

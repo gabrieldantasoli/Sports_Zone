@@ -56,6 +56,36 @@ export default () => {
         }
     }
 
+    const handleAddToCart = async () => {
+        if (user != null) {
+            try {
+                const res = await axios.get(`/cart/${user._id}/${produto._id}`);
+                console.log(res.data);
+                if (res.data.length == 0) {
+                    const data = {
+                        "user": user._id,
+                        "product_id": produto._id,
+                        "qtd": quantidade
+                    }
+                    await axios.put("/cart",data);
+                    toast.success("Product added to cart!");
+                } else {
+                    const total = parseInt(res.data[0].qtd) + parseInt(quantidade);
+                    const data = {
+                        "qtd": total
+                    }
+                    await axios.put(`/cart/${res.data[0]._id}`,data);
+                    toast.success("Product added to cart!");
+                }
+            } catch (err) {
+                toast.error(err.message);
+            }
+            
+        } else {
+            toast.error("You are not logged in!")
+        }
+    }
+
     const handleSearch = async (text) => {
         try {
             if (text.trim() == "") {
@@ -81,37 +111,47 @@ export default () => {
         } catch (err) {
             toast.error(err.message);
         }
+        
     }
 
     const createQuestion = async () => {
-        const question = {
-            "product_id": id,
-            "message": pergunta,
-            "nick": user.username
+        if (user != null) {
+            const question = {
+                "product_id": id,
+                "message": pergunta,
+                "nick": user.username
+            }
+            try {
+                await axios.put("/question", question);
+                setPergunta("");
+                toast.success("Pergunta cadastrada!");
+                handleClick();
+            } catch (err) {
+                toast.error(err.message)
+            }
+        } else {
+            toast.error("You are not Logged in!");
         }
-        try {
-            await axios.put("/question", question);
-            setPergunta("");
-            toast.success("Pergunta cadastrada!");
-            handleClick();
-        } catch (err) {
-            toast.error(err.message)
-        }
+        
     }
 
     const responder = async (p_id) => {
-        const answer = {
-            "question_id": p_id,
-            "message": resposta,
-            "nick": user.username
-        }   
-        try {
-            await axios.put("/answer", answer);
-            setResposta("");
-            setRespostas({});
-            handleAnswer();
-        } catch (err) {
-            toast.error(err.message);
+        if (user != null) {
+            const answer = {
+                "question_id": p_id,
+                "message": resposta,
+                "nick": user.username
+            }   
+            try {
+                await axios.put("/answer", answer);
+                setResposta("");
+                setRespostas({});
+                handleAnswer();
+            } catch (err) {
+                toast.error(err.message);
+            }
+        } else {
+            toast.error("You are not Logged in!");
         }
     }
 
@@ -220,7 +260,7 @@ export default () => {
                         <input type="number" name="quantidade" id="quantidade" value={quantidade} min={1} max={produto.stock} onChange={(e) => setQuantidade(e.target.value > produto.stock ? produto.stock : e.target.value)} />
                     </div>
                     
-                    <button id='add'>Adicionar ao carrinho</button>
+                    <button id='add' onClick={handleAddToCart}>Adicionar ao carrinho</button>
                     <button id='buy'>Comprar agora</button>
                     <hr />
                     <button id='fav'>Favoritar</button>

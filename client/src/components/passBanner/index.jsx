@@ -18,7 +18,7 @@ export default () => {
         }
         try {
             await axios.put(`/user/${user._id}`, changePass);
-            toast.success("ok")
+            toast.success("Success Action!")
         } catch (err) {
             toast.error(err.message);
         }

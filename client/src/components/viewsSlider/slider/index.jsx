@@ -15,15 +15,17 @@ export default () => {
   const handleClick = async () => {
     try {
       const res = await axios.get('/product');
-      const userViews = (
-        await axios.get(`/views/get/${user._id}`)
-      ).data[0];
+      if (user != null) {
+          const userViews = (
+            await axios.get(`/views/get/${user._id}`)
+          ).data[0];
 
-      console.log(userViews);
+          console.log(userViews);
 
-      const sortedProducts = res.data.sort((a, b) => calculateProductScore(b, userViews) - calculateProductScore(a, userViews));
-      const limitedProducts = sortedProducts.slice(0, 15);
-      setProdutos(limitedProducts);
+          const sortedProducts = res.data.sort((a, b) => calculateProductScore(b, userViews) - calculateProductScore(a, userViews));
+          const limitedProducts = sortedProducts.slice(0, 15);
+          setProdutos(limitedProducts);
+      }
     } catch (err) {
       toast.error('Falha ao acessar banco de dados!');
     }

@@ -1,15 +1,72 @@
-section .userArea {
+section.userPage .userArea {
     width: 100%;
     min-height: calc(100vh - 105px);
     display: flex;
 }
 
-section .userArea .commands {
+section.userPage .userArea .commands {
+    display: flex;
+    flex-direction: column;
     width: 250px;
-    background-color: blue;
+    padding: 1rem;
 }
 
-section .userArea .components {
-    width: calc(100% - 250px);
-    background-color: red;
+section.userPage .userArea .commands p {
+    color: var(--red-color);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0.7rem 0;
 }
+
+section.userPage .userArea .commands button {
+    width: 100%;
+    padding: 0.4rem 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.7rem;
+    border: 2px solid #000;
+    background-color: var(--primary-back-color);
+    border-radius: 0.7rem;
+    transition: 0.4s ease-in-out;
+}
+
+section.userPage .userArea .commands button:hover {
+    background-color: var(--gray-color_2);
+    color: var(--primary-back-color);
+}
+
+section.userPage .userArea .commands button.active {
+    background-color: var(--segundary-back-color);
+    color: var(--primary-back-color);
+}
+
+
+section.userPage .userArea .components {
+    width: calc(100% - 250px);
+    background-color: var(--primary-back-color);
+}
+
+section.userPage .userArea .components .start {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+section.userPage .userArea .components .start h3 {
+    font-size: 2rem;
+    color: var(--red-color);
+}
+
+section.userPage .userArea .components .start p {
+    font-size: 1.3rem;
+    width: 100%;
+    padding: 1rem;
+    max-width: 1000px;
+}
+
+/* 
+section.userPage .commands  */

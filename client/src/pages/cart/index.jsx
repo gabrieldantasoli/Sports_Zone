@@ -75,7 +75,57 @@ export default () => {
   }
 
   const handleBuy = async () => {
-    alert("Comprados");
+    if (products.length > 0) {
+      modifyLoad({ type: "LOADING_START" }); 
+      try {
+        const data = {
+          "user": user._id,
+        }
+        const res = await axios.put("/shopping/", data); 
+        const shopping_id = res.data._id;
+
+        let someProduct = false;
+
+        for (const item of products) {
+          try {
+            const dataSP = {
+              "shopping": shopping_id,
+              "product_id": item.product_id,
+              "qtd": item.qtd,
+              "unityValue": (linkProducts[item.product_id].value * (1 - linkProducts[item.product_id].discount/100)).toFixed(2)
+            }
+            if (item.qtd <= linkProducts[item.product_id].stock) {
+              const dataUP = {
+                "stock": linkProducts[item.product_id].stock - item.qtd,
+                "sold": linkProducts[item.product_id].sold + item.qtd
+              }
+              await axios.put(`/product/${item.product_id}`, dataUP);
+              await axios.put(`/shopping/product/`, dataSP);
+              await axios.delete(`/cart/${item._id}`);
+              someProduct = true;
+            } else {
+              toast.error(`Temos apenas ${linkProducts[item.product_id].stock} desse produto em estoque!`);
+            }
+            modifyLoad({ type: "LOADING_END" }); 
+          } catch (err) {
+            modifyLoad({ type: "LOADING_END" }); 
+            toast.error(err.message);
+          }
+        }
+
+        if (someProduct == false) {
+          await axios.delete(`/shopping/${shopping_id}`)
+        } else {
+          toast.success("Produtos comprados!")
+          window.location.reload();
+        }
+        
+      } catch (err) {
+        console.log(err.message);
+      }
+    } else {
+      toast.success("Adicione alguns produtos primeiro");
+    }
   }
 
   useEffect(() => {

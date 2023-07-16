@@ -46,6 +46,15 @@ export const getCartProducts = async (req, res, next) => {
     }
 };
 
+export const countCartProducts = async (req, res, next) => {
+    try {
+        const cartProducts = await CartProduct.countDocuments({"user": req.params.id});
+        res.status(200).json(cartProducts);
+    } catch (err) {
+        next(err);
+    }
+};
+
 export const getCartProduct = async (req, res, next) => {
     try {
         const cartProduct = await CartProduct.find({"user": req.params.id, "product_id": req.params.productid});

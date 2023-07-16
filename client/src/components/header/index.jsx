@@ -17,6 +17,7 @@ export default () => {
 
     const [categorias, setCategorias] = useState([]);
     const [elementosVisiveis, setElementosVisiveis] = useState([]);
+    const [qtdItemsInCart, setQtdItemsInCart] = useState(0);
 
     const removeItens = () => {
         const largura = window.innerWidth;
@@ -53,11 +54,23 @@ export default () => {
             toast.error("Falha ao acessar banco de dados!");
         }
     }
+
+    const getQtdCompras = async () => {
+        if (user != null) {
+            try {
+                const res = await axios.get(`/cart/count/${user._id}`)
+                setQtdItemsInCart(res.data)
+            } catch (err) {
+                toast.error("Falha ao acessar banco de dados!");
+            }
+        }
+    }
         
     useEffect(() => {
         handleClick();
         setTimeout(() => removeItens(), 2000);
         window.addEventListener('resize', removeItens);
+        getQtdCompras();
         return () => {
           window.removeEventListener('resize', removeItens);
         };
@@ -105,7 +118,7 @@ export default () => {
                 <div className="cart">
                     <a href="/cart">
                         <BiCart />
-                        <span className="cart-number">9+</span>
+                        <span className="cart-number">{qtdItemsInCart > 9 ? "9+" : qtdItemsInCart}</span>
                     </a>
                     
                 </div>

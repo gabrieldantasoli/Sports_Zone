@@ -9,6 +9,8 @@ import userRoute from "./routes/user/users.js";
 import userAdress from "./routes/user/address.js";
 import routerViews from "./routes/user/views.js";
 import routerCartProduct from "./routes/user/cartProduct.js";
+import routerShopping from "./routes/user/shoppings.js"
+
 
 import routerCategory from "./routes/product/category.js";
 import routerProduct from "./routes/product/product.js";
@@ -49,6 +51,7 @@ app.use("/answer", routerAnswer);
 app.use("/assessment", routerAssessment);
 app.use("/views", routerViews);
 app.use("/cart", routerCartProduct);
+app.use("/shopping", routerShopping);
 
 app.use((err, req, res, next) => {
     const errorStatus = err.status || 500;

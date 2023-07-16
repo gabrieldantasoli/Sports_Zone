@@ -379,6 +379,10 @@ section.product_layer .nenhum {
     display: none;
 }
 
+span.out {
+    text-decoration: line-through;
+}
+
 /* Product Answers styles end's here */
 
 

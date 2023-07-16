@@ -253,14 +253,15 @@ export default () => {
                     <p className='value'><span>Valor: R$</span>{(produto.value * (1 - produto.discount/100)).toFixed(2)}</p>
                     <p className='entrega'><span>Entrega: </span>{produto.delivery === 0 ? "Grátis" : `R$${produto.delivery}`}  </p>
                     <p><GrLocation /> Enviar para 58380000</p>
-                    <p className="estoque">Em estoque: {produto.stock}</p>
+                    <p className="estoque">Em estoque: {produto.stock > 0 ? produto.stock : "Esgotado"}</p>
                     <div className="quantidade">
                         <label htmlFor="quantidade">Quantidade : </label>
                         <input type="number" name="quantidade" id="quantidade" value={quantidade} min={1} max={produto.stock} onChange={(e) => setQuantidade(e.target.value > produto.stock ? produto.stock : e.target.value)} />
                     </div>
                     
-                    <button id='add' onClick={handleAddToCart}>Adicionar ao carrinho</button>
-                    <button id='buy'>Comprar agora</button>
+
+                    <button id='add' onClick={handleAddToCart} disabled={produto.stock == 0}> {produto.stock > 0 ? "Adicionar ao carrinho" : <span className='out'>Adicionar ao carrinho</span>}</button>
+                    <button id='buy' disabled={produto.stock == 0}> {produto.stock > 0 ? "Comprar agora" : <span className='out'>Comprar agora</span>}</button>
                     <hr />
                     <button id='fav'>Favoritar</button>
                 </div>

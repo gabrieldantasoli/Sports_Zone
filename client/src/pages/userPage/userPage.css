@@ -1,0 +1,15 @@
+section .userArea {
+    width: 100%;
+    min-height: calc(100vh - 105px);
+    display: flex;
+}
+
+section .userArea .commands {
+    width: 250px;
+    background-color: blue;
+}
+
+section .userArea .components {
+    width: calc(100% - 250px);
+    background-color: red;
+}

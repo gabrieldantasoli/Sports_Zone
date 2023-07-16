@@ -17,7 +17,7 @@ router.get("/", getProducts);
 router.get("/:id", getProduct);
 
 // GET PRODUCTS BY CATEGORY
-router.get("/category/:name", getProductsByCategory)
+router.get("/category/:name", getProductsByCategory);
 
 // DELETE A PRODUCT
 router.delete("/:id", verifyAdmin, deleteProduct);

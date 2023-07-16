@@ -91,12 +91,6 @@ export default () => {
                     </div>
                 </div>
                 <div className="mainHeaderSearch">
-                    <select id="searchBy" name="searchBy">
-                        <option value="all">todos os departamentos</option>
-                        <option value="bicycles">Bicicletas</option>
-                        <option value="food">Food</option>
-                        <option value="cloutes">Roupas</option>
-                    </select>
                     <input type="text" name="search" id="search" placeholder='Pesquisar em Sport_Zone' />
                     <button id='search-button'>
                         <BiSearchAlt />
@@ -105,7 +99,7 @@ export default () => {
                 <div className="isLogged">
                     <div>
                         { user ? (
-                            <p>{ user.username.split()[0].slice(0,10) }</p>
+                            <a href="/userpage">{ user.username.split()[0].slice(0,10) }</a>
                         ) : (
                             <a href="/login">
                                 <span className='small-write'>Olá, faça seu login</span>
@@ -145,7 +139,7 @@ export default () => {
                 <div className="isLogged">
                     <div>
                         { user ? (
-                            <p>{ user.username.split()[0] }</p>
+                            <a href="/userpage">{ user.username.split()[0].slice(0,10) }</a>
                         ) : (
                             <a href="/login">
                                 <span className='small-write'>Login</span>

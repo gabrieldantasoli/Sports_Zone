@@ -153,11 +153,13 @@ export default () => {
         <section className="cart">
             { loading ? <Loading /> : <></>}
             <Header />
-            <div className="totalPrice">
-              <p className='total'>Valor total : <span>R${total.toFixed(2)}</span></p>
-              <button onClick={handleBuy}>Fechar Pedido</button>
-            </div>
-            { products.length  == 0 ? <div className="emptyCart">
+            { user != null ? (
+              <div className="totalPrice">
+                <p className='total'>Valor total : <span>R${total.toFixed(2)}</span></p>
+                <button onClick={handleBuy}>Fechar Pedido</button>
+              </div>
+            ) : "" }
+            { (products.length  == 0 && user != null) ? <div className="emptyCart">
               <p>Empty Cart  <span>:(</span></p>
             </div> : "" }
             {user ? (

@@ -6,14 +6,19 @@ import './userPage.css';
 import { AuthContext } from '../../context/authContext';
 import { Navigate } from 'react-router-dom';
 import axios from 'axios';
-
+import { BiSolidLogOut } from 'react-icons/bi';
 
 export default () => {
 
-    const { user } = useContext(AuthContext);
+    const { user, dispatch } = useContext(AuthContext);
 
     const [action, setAction] = useState("");
     const [isAdmin, setIsAdmin] = useState(false);
+
+    const handleClick = async (e) => {
+        e.preventDefault();
+        dispatch({ type: "LOGOUT" });
+    }
 
     useEffect(() => {
         const set = async () => {
@@ -47,6 +52,7 @@ export default () => {
                                     <button className={action == "create_product" ? "active" : ""} onClick={() => setAction("create_product")}>Create Products</button>
                                 </div>
                             ) : <></> }
+                            <button id='out' onClick={handleClick}><BiSolidLogOut className='out'/> out</button>
                         </div>
                         <div className="components">
                             { action == "" ? (

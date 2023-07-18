@@ -5,6 +5,7 @@ section.userPage .userArea {
 }
 
 section.userPage .userArea .commands {
+    position: relative;
     display: flex;
     flex-direction: column;
     width: 250px;
@@ -43,6 +44,8 @@ section.userPage .userArea .commands button.active {
 
 section.userPage .userArea .components {
     width: calc(100% - 250px);
+    height: calc(100vh - 105px);
+    overflow-y: scroll;
     background-color: var(--primary-back-color);
 }
 
@@ -68,5 +71,27 @@ section.userPage .userArea .components .start p {
     max-width: 1000px;
 }
 
+section.userPage #out {
+    position: absolute;
+    bottom: 0.5rem;
+    margin: 0;
+    left: 0.5rem;
+    width: auto;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--red-color);
+    border: 3px solid var(--red-color);
+}
+
+section.userPage #out .out {
+    font-size: 1.5rem;
+}
+
+section.userPage #out:hover {
+    background-color: var(--red-color);
+    color: #000;
+}
 /* 
 section.userPage .commands  */

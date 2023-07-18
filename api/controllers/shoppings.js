@@ -42,7 +42,7 @@ export const createShoppingProduct = async (req, res, next) => {
 export const getShoppings = async (req, res, next) => {
     try {
         // const shoppings = await Shopping.find().lean();
-        const shoppings = await Shopping.find();
+        const shoppings = await Shopping.find({"user": req.params.id});
         res.status(200).json(shoppings);
     } catch (err) {
         next(err);

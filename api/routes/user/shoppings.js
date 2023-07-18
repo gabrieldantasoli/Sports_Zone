@@ -10,7 +10,7 @@ router.put("/", verifyUser, createShopping);
 router.put("/product", verifyUser, createShoppingProduct);
 
 // GET ALL Shopping
-router.get("/", verifyUser, getShoppings);
+router.get("/get/:id", verifyUser, getShoppings);
 
 // GET ALL ShoppingProducts By Id 
 router.get("/:id", verifyUser, getShoppingProducts);

@@ -1,0 +1,53 @@
+section.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: calc(100vh - 105px);
+}
+
+section.container button {
+    padding: 0.2rem 0.8rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    border: 2px solid #000;
+    border-radius: 0.8rem;
+    transition: 0.5s ease-in-out;
+}
+
+section.container button:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+section.container button.active {
+    color: #70eb38;
+    border: 2px solid #70eb38;
+    background-color: transparent;
+}
+
+section.container button.active:hover {
+    color: #fff;
+    background-color: #70eb38;
+}
+
+section.container h4 {
+    color: var(--red-color);
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+}
+
+section.container label {
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 0.2rem;
+}
+
+section.container input {
+    width: 90%;
+    max-width: 350px;
+    margin: 0.5rem 0;
+    padding: 0.2rem 1rem;
+}

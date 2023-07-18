@@ -6,10 +6,13 @@ import { toast } from 'react-toastify';
 import { AuthContext } from "../../../context/authContext.js";
 import axios from "axios";
 import { GiNotebook } from "react-icons/gi";
+import { LoadingContext } from '../../../context/backendLoading';
+import Loading from '../../loading';
 
 export default () => {
 
     const { user } = useContext(AuthContext);   
+    const { loading, modifyLoad }  = useContext(LoadingContext)
 
     const [dataShoppings, setDataShoppings] = useState({});
     const [avaliation, setAvaliation] = useState(false);
@@ -17,6 +20,7 @@ export default () => {
     const getShoppings = async () => {
         if (user != null) {
             try {
+                modifyLoad({ type: "LOADING_START" }); 
                 const res = await axios.get(`/shopping/get/${user._id}`);
                 let data = {};
                 for (let item in res.data) {
@@ -35,7 +39,9 @@ export default () => {
                 }
                 console.log(data);
                 setDataShoppings(data);
+                modifyLoad({ type: "LOADING_END" }); 
             } catch (err) {
+                modifyLoad({ type: "LOADING_END" }); 
                 toast.error("Falha ao acessa o banco de dados!");
             }
         }
@@ -82,7 +88,8 @@ export default () => {
     },[]);
 
     return (
-        <div className='area'>
+        <section className='area'>
+            { loading ? <Loading /> : <></>}
             <h3>Your Shoppings</h3>
             { dataShoppings.length == 0 ? <p>Nenhuma Compra foi feita ainda!</p> : ""}
             {Object.keys(dataShoppings).map((key, index) => {
@@ -118,6 +125,6 @@ export default () => {
                             </div>
                         );
                     })}
-        </div>
+        </section>
     )
 }

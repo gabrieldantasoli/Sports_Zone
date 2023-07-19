@@ -1,0 +1,45 @@
+section.product {
+    text-align: center;
+    width: 100%;
+    height: calc(100vh - 100px);
+    overflow-y: scroll;
+}
+
+section.product h4 {
+    margin-top: 1rem;
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--red-color);
+}
+
+section.product label {
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+section.product input {
+    display: block;
+    width: 90%;
+    max-width: 350px;
+    margin: 0.3rem auto;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem 1rem;
+}
+
+section.product button {
+    font-weight: 700;
+    color: var(--red-color);
+    font-size: 1.4rem;
+    border: 2px solid var(--red-color);
+    border-radius: 0.3rem;
+    padding: 0.5rem 1rem;
+    margin: 1rem 0;
+    transition: 0.5s ease-in-out;
+}
+
+
+section.product button:hover {
+    background-color: var(--red-color);
+    color: #fff;
+}

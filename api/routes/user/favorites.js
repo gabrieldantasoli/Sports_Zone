@@ -8,7 +8,7 @@ const router = express.Router();
 router.put("/", verifyUser, createFavoriteProduct);
 
 // DELTE a Favorite Product
-router.delete("/:id", verifyUser, deleteFavoriteProduct);
+router.delete("/:id/:pi", verifyUser, deleteFavoriteProduct);
 
 // GET ALL Favorite Products By User 
 router.get("/:id", verifyUser, getFavoriteProducts);

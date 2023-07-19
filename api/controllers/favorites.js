@@ -17,7 +17,7 @@ export const createFavoriteProduct = async (req, res, next) => {
 
 export const deleteFavoriteProduct = async (req, res , next) => {
     try {
-        await Favorite.findByIdAndDelete(req.params.id);
+        await Favorite.findOneAndDelete({"user": req.params.id, "product_id": req.params.pi});
         res.status(200).json("Product has been Unfavorited!")
     } catch (err) {
         next(err);

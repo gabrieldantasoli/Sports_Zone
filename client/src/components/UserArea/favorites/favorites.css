@@ -1,0 +1,71 @@
+.area .favoriteItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1000px;
+    margin: 1rem auto;
+    padding: 1rem 1.5rem;
+    border: 2px solid #000;
+    border-radius: 0.3rem;
+}
+
+.area .favoriteItem .favoriteinfo {
+    max-width: 600px;
+}
+
+.area .favoriteItem .image {
+    width: 100px;
+    height: 100px;
+}
+
+.area .favoriteItem .image img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+}
+
+.area .favoriteItem .name {
+    color: var(--red-color);
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+.area .favoriteItem p {
+    text-align: center;
+    color: #000;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.area .favoriteItem button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: 2px solid var(--red-color);
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    font-size: 1.5rem;
+    transition: 0.5s ease-in-out;
+}
+
+.area .favoriteItem button:hover {
+    background-color: var(--red-color);
+}
+
+.area .favoriteItem button * {
+    color: var(--red-color);
+}
+
+.area .favoriteItem button:hover * {
+    color: #fff;
+}
+
+.area .load {
+    color: #000;
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-top: 2rem;
+    width: 100%;
+    text-align: center;
+}

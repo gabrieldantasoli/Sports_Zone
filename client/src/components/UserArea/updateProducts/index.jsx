@@ -13,6 +13,9 @@ export default () => {
     const { user } = useContext(AuthContext);
 
     const [product_id, setProduct_id] = useState("");
+    const [product_id_aux, setProduct_id_aux] = useState("");
+
+    const [product, setProduct] =  useState("");
 
     const [name , setname] = useState("");
     const [category , setcategory] = useState("");
@@ -28,6 +31,7 @@ export default () => {
     const [uploaded, setUploaded] = useState(false);
 
     const handleUpdate = async () => {
+        const array = img_gallery.join(",");
         let data = {
             "name": name,
             "category": category,
@@ -41,34 +45,94 @@ export default () => {
             "stock": stock,
             "details": details,
             "img_preview": img_preview,
-            "img_gallery": img_gallery.split(",")
+            "img_gallery": array
         };
 
         if (user != null) {
             try {
-                await axios.put(`/product`, data);
+                await axios.put(`/product/${product_id}`, data);
                 toast.success("Produto cadastrado!");
+                unloadProduct();
             } catch (err) {
                 toast.error(err.message);
             }
         }
     }
 
+    const loadProduct = async (id) => {
+        try {
+            const res = await axios.get(`/product/${id}`);
+            const data = res.data;
+            setProduct(res.data);
+            setProduct_id(id);
+            setname(data.name);
+            setcategory(data.category);
+            setvalue(data.value);
+            setdiscount(data.discount);
+            setprevision(data.prevision);
+            setbrand(data.brand);
+            setdelivery(data.delivery);
+            setstock(data.stock);
+            setdetails(data.details);
+            setimg_preview(data.img_preview);
+            setimg_gallery(data.img_gallery);
+        } catch (err) {
+            toast.error("Produto não encontrado!");
+        }
+    }
+
+    const unloadProduct = async (id) => {
+        try {
+            setProduct("res.data");
+            setProduct_id("");
+            setProduct_id_aux("");
+            setname("data.name");
+            setcategory("");
+            setvalue(0);
+            setdiscount(0);
+            setprevision(0);
+            setbrand("");
+            setdelivery(0);
+            setstock(0);
+            setdetails("");
+            setimg_preview("");
+            setimg_gallery("");
+        } catch (err) {
+            toast.error("Produto não encontrado!");
+        }
+    }
     useEffect(() => {
         
     },[]);
 
     return (
         <div>
+            {user == null ? navigate("/login") : <></> }
             { user != null && product_id == "" ? (
                 <section className="product">
                     <h4>Create Product</h4>
+                    <label htmlFor="pid" className='pid'>Product Id :</label>
+                    <input
+                        type="text"
+                        placeholder="Product Id"
+                        id="pid"
+                        value={product_id_aux}
+                        onChange={(e) => {
+                            setProduct_id_aux(e.target.value);
+                            setUploaded(true);
+                        }}
+                        className="lInput"
+                    />
 
+                    <button disabled={uploaded == false} className={uploaded == true ? "active" : ""} onClick={() => loadProduct(product_id_aux)}>
+                        Buscar
+                    </button>
                 </section>
             ): <></>}
             { user != null && product_id != "" ? (
                 <section className="product">
                     <h4>Create Product</h4>
+
                     <label htmlFor="name">Name :</label>
                     <input
                         type="text"
@@ -220,10 +284,10 @@ export default () => {
 
                     
                     <button disabled={uploaded == false} className={uploaded == true ? "active" : ""} onClick={handleUpdate}>
-                        Create
+                        Update
                     </button>
                 </section>
-            ) : navigate("/login")}
+            ) : <></>}
         </div>
     );
 }

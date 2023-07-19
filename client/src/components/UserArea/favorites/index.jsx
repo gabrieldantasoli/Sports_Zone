@@ -15,7 +15,15 @@ export default () => {
         if (user != null) {
             try {
                 const res = await axios.get(`/favorites/${user._id}`);
-                setFavorites(res.data)
+                const data = res.data;
+
+                let favoriteProducts = [];
+                for (let item in data) {
+                    const res = await axios.get(`/product/${data[item].product_id}`);
+                    favoriteProducts.push(res.data);
+                }
+
+                setFavorites(favoriteProducts);
             } catch (err) {
                 toast.error(err.message);
             }
@@ -31,6 +39,16 @@ export default () => {
     return (
         <div className='area'>
             <h3>favorites</h3>
+
+            <div className="favorites">
+                { favorites.map((item, index) => {
+                    return (
+                        <div className="favoriteItem">
+                            <p>{ item.name }</p>
+                        </div>
+                    );
+                })}
+            </div>
         </div>
     )
 }

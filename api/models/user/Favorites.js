@@ -16,4 +16,7 @@ const UserFavoritesSchema = new mongoose.Schema(
     { timestamps: true }
 );
 
+// Criar um índice único para o campo user e product_id
+UserFavoritesSchema.index({ user: 1, product_id: 1 }, { unique: true });
+
 export default mongoose.model("UserFavorites", UserFavoritesSchema);

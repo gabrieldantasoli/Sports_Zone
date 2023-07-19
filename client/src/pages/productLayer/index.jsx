@@ -5,17 +5,19 @@ import { Header } from "../../components/";
 import './productLayer.css';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { useParams } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { GrLocation } from 'react-icons/gr';
 import { BiSearchAlt, BiSolidStarHalf } from 'react-icons/bi';
 import { RxTriangleDown } from 'react-icons/rx';
 import { AuthContext } from '../../context/authContext';
+import { useNavigate } from 'react-router-dom';
 
 
 export default () => {
 
     const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const { id } = useParams();
 
@@ -170,7 +172,24 @@ export default () => {
             console.log(err);
         }
     }
-        
+    
+    const favoriteProduct = async () => {
+        if (user != null) {
+            const data = {
+                "user": user._id,
+                "product_id": produto._id
+            }
+            try {
+                await axios.put("/favorites", data);
+                toast.success("Produto Favoritado!");
+            } catch (err) {
+                toast.error(err.message);
+            }
+        } else {
+            toast.error("You are not logged in!")
+        }
+    }
+
     useEffect(() => {
         handleClick();
     }, []);
@@ -263,7 +282,7 @@ export default () => {
                     <button id='add' onClick={handleAddToCart} disabled={produto.stock == 0}> {produto.stock > 0 ? "Adicionar ao carrinho" : <span className='out'>Adicionar ao carrinho</span>}</button>
                     <button id='buy' disabled={produto.stock == 0}> {produto.stock > 0 ? "Comprar agora" : <span className='out'>Comprar agora</span>}</button>
                     <hr />
-                    <button id='fav'>Favoritar</button>
+                    <button id='fav' onClick={favoriteProduct}>Favoritar</button>
                 </div>
             </div>
             <div className="perguntas">

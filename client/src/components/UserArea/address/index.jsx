@@ -19,59 +19,71 @@ export default () => {
     const [street, setStreet] = useState("");
     const [complement, setComplement] = useState("");
     const [number, setNumber] = useState("");
+    const [cep, setCep] = useState("");
     const [address, setAddress] = useState({});
 
     const [uploaded, setUploaded] = useState(false);
 
     const handleUpdate = async () => {
         let data = {
+            "user": user.user._id,
             "country": country,
             "state": state,
             "city": city,
             "neighborhood": neighborhood,
             "street": street,
             "complement": complement,
-            "number": number
+            "number": number,
+            "cep": cep
         };
-        if (address.length == 0) {
+        if (address == null) {
             try {
-                await axios.put(`/address`, data);
+                const res = await axios.put(`/address`, data);
+                setAddress(res.data);
                 toast.success("Address created!")
             } catch (err) {
-                toast.error(err.message);
+                if (err.message == "Request failed with status code 500") {
+                    toast.error("Preeencha todos os campos!");
+                    setUploaded(false);
+                } else {
+                    toast.error(err.message);
+                }
             }
         } else {
-
+            const res = await axios.put(`/address/${address._id}`, data);
+            setAddress(res.data);
+            setUploaded(false);
+            toast.success("Address updated!")
         }
-        // if (password == "") {
-        //     data = {
-        //         "username": username,
-        //         "email": email
-        //     }
-        // } else {
-        //     data = {
-        //         "username": username,
-        //         "email": email,
-        //         "password": hash
-        //     }
-        // }
-        // try {
-        //     await axios.put(`/user/${user.user._id}`, data);
-        //     toast.success("Dados de Usuário Atualizado!")
-        // } catch (err) {
-        //     toast.error(err.message);
-        // }
     }
 
     useEffect(() => {
         const getAddress = async () => {
-            const res = await axios.get(`/address/${user.user._id}`);
-            console.log(res.data);
-            setAddress(res.data);
+            try {
+                const res = await axios.get(`/address/${user.user._id}`);
+                setAddress(res.data[0]);
+            } catch (err) {
+                toast.error("Erro ao acessar banco de dados, recarregue a página!");
+            }
+            
         };
 
         getAddress();
     },[user]);
+
+    useEffect(() => {
+        if (address != null) {
+            setCountry(address.country);
+            setState(address.state);
+            setCity(address.city);
+            setNeighborhood(address.neighborhood);
+            setStreet(address.street);
+            setComplement(address.complement);
+            setNumber(address.number);
+            setCep(address.cep);
+        }
+        
+    }, [address]);
 
     return (
         <div>
@@ -164,6 +176,19 @@ export default () => {
                         value={number}
                         onChange={(e) => {
                             setNumber(e.target.value);
+                            setUploaded(true);
+                        }}
+                        className="lInput"
+                    />
+
+                    <label htmlFor="cep">Cep :</label>
+                    <input
+                        type="text"
+                        placeholder="Cep"
+                        id="cep"
+                        value={cep}
+                        onChange={(e) => {
+                            setCep(e.target.value);
                             setUploaded(true);
                         }}
                         className="lInput"

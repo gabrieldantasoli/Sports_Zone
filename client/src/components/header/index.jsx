@@ -32,7 +32,7 @@ export default () => {
             list.removeChild(lastElement);
             }
         } else if (totalWidth - nav.offsetWidth > 100) {
-            const maxVisibleElements = Math.floor(totalWidth / 100); // Defina o tamanho máximo da lista com base na largura
+            const maxVisibleElements = Math.floor(totalWidth / 100);
             while (totalWidth - nav.offsetWidth > 100 && tempList.length < categorias.length && tempList.length < maxVisibleElements) {
             const firstElementText = categorias[tempList.length];
             const novoLiElement = document.createElement('li');
@@ -86,9 +86,15 @@ export default () => {
                 </div>
                 <div className="location">
                     <HiLocationMarker />
-                    <div className="to">
-                        <button>Enviar para...</button>
+                    { user == null ? (
+                        <div className="to">
+                            <a href='/login'>Enviar para...</a>
+                        </div>
+                    ) : (
+                        <div className="to">
+                        <a href='/userpage'>Enviar para...</a>
                     </div>
+                    ) }
                 </div>
                 <div className="mainHeaderSearch">
                     <input type="text" name="search" id="search" placeholder='Pesquisar em Sport_Zone' />

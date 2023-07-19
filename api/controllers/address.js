@@ -9,7 +9,7 @@ export const createUSerAddress = async (req, res, next) => {
       });
   
       await newAddress.save();
-      res.status(200).send("Address has been created.");
+      res.status(200).send(newAddress);
     } catch (err) {
       next(err);
     }
@@ -22,7 +22,7 @@ export const updateUserAddress = async (req, res, next) => {
             { $set: req.body },
             { new: true }
         );
-        res.status(200).json(updateUerAddress);
+        res.status(200).send(updateUerAddress);
     } catch (err) {
         next(err);
     }

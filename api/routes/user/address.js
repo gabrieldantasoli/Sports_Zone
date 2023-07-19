@@ -7,9 +7,6 @@ const router = express.Router();
 // UPDATE ADDRESS
 router.put("/:id", verifyUser, updateUserAddress); 
 
-// DELETE ADDRESS
-router.delete("/:id", verifyUser, deleteUserAddress);
-
 // CREATE ADDRESS
 router.put("/", verifyUser, createUSerAddress);
 

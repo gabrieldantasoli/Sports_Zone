@@ -7,3 +7,7 @@ export { default as Piscinas_img } from "./piscinas.jpg";
 export { default as Tenis_img } from "./tenis.jpg";
 export { default as Login_img } from "./login_icon.gif";
 export { default as Loading_img } from "./loading.gif";
+export { default as Explore_img } from "./explore.jpg";
+export { default as Sports_img } from "./sports.png";
+export { default as Suplements_img } from "./suplemento.jpg";
+export { default as Training_img } from "./training.jpg";

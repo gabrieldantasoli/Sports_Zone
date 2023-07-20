@@ -91,5 +91,4 @@ app.listen(8800, () => {
  *  + Contact      : gabriel.dantas.oliveira@ccc.ufcg.edu.br
  *  + JAVASCRIPT FOR ALL LIFE!
  * 
- *   AUXILIAR : https://github.com/safak/youtube2022/tree/mern-booking
  **/ 

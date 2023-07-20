@@ -2,4 +2,34 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: red;
+    background-position: center;
+    background-size: cover;
+}
+
+.slide .slide_view p {
+    font-weight: 800;
+    font-size: 3rem;
+    text-align: center;
+    text-shadow: 0 0 5px #000, 0 0 10px #000;
+    padding: 0 1rem;
+    color: var(--primary-back-color);
+}
+
+.slide .slide_view:nth-child(1) {
+    background-image: url(../../imgs/explore.jpg);
+}
+
+.slide .slide_view:nth-child(2) {
+    background-position: left;
+    background-image: url(../../imgs/suplemento.jpg);
+}
+
+.slide .slide_view:nth-child(3) {
+    background-position: left;
+    background-image: url(../../imgs/training.jpg);
+}
+
+.slide .slide_view:nth-child(4) {
+    background-image: url(../../imgs/sports.png);
 }

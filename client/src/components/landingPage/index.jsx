@@ -21,16 +21,16 @@ export default () => {
         <section className='landingPage full_window' id="landingP">
             <Splide className='slide' options={{ rewind: true, gap: '1rem', hasSliderWrapper: true, hasAutoplayProgress: true,}}>
                 <SplideSlide className='slide_view'>
-                  <button onClick={handleClick}>out</button>
+                    <p>Explore nature with great equipment</p>
                 </SplideSlide>
                 <SplideSlide className='slide_view'>
-                    <p>slide 2</p>
+                    <p>supplement your diet and improve your results</p>
                 </SplideSlide>
                 <SplideSlide className='slide_view'>
-                    <p>slide 3</p>
+                    <p>Subscribe to the sport zone pass and enjoy incredible benefits</p>
                 </SplideSlide>
                 <SplideSlide className='slide_view'>
-                    <p>slide 4</p>
+                    <p>Use the best sports equipment</p>
                 </SplideSlide>
             </Splide>
 

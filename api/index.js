@@ -91,4 +91,6 @@ app.listen(8800, () => {
  *  + Contact      : gabriel.dantas.oliveira@ccc.ufcg.edu.br
  *  + JAVASCRIPT FOR ALL LIFE!
  * 
+ * npm install -g @vercel/ncc
+ * ncc build index.js -o build
  **/ 

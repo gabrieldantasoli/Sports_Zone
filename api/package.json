@@ -24,5 +24,5 @@
     "ncp": "^2.0.0",
     "nodemon": "^2.0.22"
   },
-  "proxy": "http://localhost:8800"
+  "proxy": "https://node4-2o2f.onrender.com"
 }

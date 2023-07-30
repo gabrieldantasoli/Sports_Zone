@@ -8,8 +8,7 @@
     "node": "18"
   },
   "scripts": {
-    "start": "nodemon index.js",
-    "build": "xcopy /E /I /Y src dist"
+    "start": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
